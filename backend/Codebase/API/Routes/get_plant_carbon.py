@@ -1,16 +1,16 @@
 from fastapi import APIRouter
 from sqlalchemy import text
 from ..config import get_engine
-from ..models import HistoryInput
+from ..models import SingleInput
 
 router = APIRouter()
 
 @router.post("/get_plant_carbon/")
-def get_plant_carbon(input_data: HistoryInput):
+def get_plant_carbon(input_data: SingleInput):
     google_id:str = input_data.googleID
     time_instance:str = input_data.timeInstance
-    db_name = f"{google_id}-{time_instance}"
-    result = {"plant": {}}
+    db_name:str = f"{google_id}-{time_instance}"
+    result:dict = {"plant": {}}
 
     try:
         with get_engine(db_name).connect() as conn:
