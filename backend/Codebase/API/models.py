@@ -2,4 +2,22 @@
 from pydantic import BaseModel
 
 class HistoryInput(BaseModel):
-    googleID: int
+    googleID: str
+    timeInstance: list[str]
+
+class SingleInput(BaseModel):
+    """
+    This wrapper class gets a single googleid-timeinstance pair.
+    """
+    googleID: str
+    timeInstance: str
+
+
+
+class SearchInput(BaseModel):
+    googleID: str
+    timeInstance: str
+    searchBarData: str
+    plantFilter: list[int]
+    returnStartNum: int
+    returnEndNum: int

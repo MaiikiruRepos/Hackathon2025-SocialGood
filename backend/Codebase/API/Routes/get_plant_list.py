@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from sqlalchemy import text
-from config import get_engine
-from models import HistoryInput
+from ..config import get_engine
+from ..models import HistoryInput
 
 router = APIRouter()
 

@@ -1,36 +1,50 @@
-# backend/Codebase/DB/create_database.py
-
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
 from datetime import datetime
-import os
 
-from config import get_engine
+from .drop_all_tables import drop_all_tables
+from ..Pathing.get_schema_path import get_schema_path
+from ..config import get_engine
 
-# === Get schema file path ===
-SCRIPT_DIR = os.getenv("SCHEMA_DIR", "backend/DB")
-SQL_SCHEMA_FILE = os.getenv("SQL_SCHEMA_FILE", "../../DB/schema.sql")
-SCHEMA_PATH = os.path.join(SCRIPT_DIR, SQL_SCHEMA_FILE)
+SCRIPT_DIR = get_schema_path()
 
 def create_database(google_id: int) -> str:
     timeinstance = datetime.now().strftime("%Y-%m-%d_%H:%M")
     db_name = f"{google_id}-{timeinstance}"
+    print(f"Creating database: {db_name}")
 
-    # Connect to MySQL server (no specific DB)
     admin_engine = get_engine("mysql")
 
-    # Create the new database
+    # Step 1: Create the database
     with admin_engine.connect() as conn:
         conn.execute(text(f"CREATE DATABASE `{db_name}`"))
+        print(f"Created database `{db_name}`")
 
-    # Read schema SQL
-    with open(SCHEMA_PATH, "r") as f:
+    # Step 2: Read schema
+    with open(SCRIPT_DIR, "r") as f:
         schema_sql = f.read()
 
-    # Connect to the new database and run schema
     user_engine = get_engine(db_name)
+
+    # Step 3: Drop all tables (optional safety)
+    drop_all_tables(user_engine)
+
+    # Step 4: Apply schema
     with user_engine.connect() as conn:
-        for stmt in schema_sql.split(";"):
-            if stmt.strip():
-                conn.execute(text(stmt.strip()))
+        for i, stmt in enumerate(schema_sql.split(";")):
+            stmt = stmt.strip()
+            if stmt:
+                try:
+                    conn.execute(text(stmt))
+                    print(f"Executed statement [{i}]: {stmt[:60]}...")
+                except Exception as e:
+                    print(f"Error executing statement [{i}]: {stmt[:60]}...")
+                    print(f"   └── {e}")
+
+    # Step 5: Confirm created tables
+    with user_engine.connect() as conn:
+        tables = conn.execute(text("SHOW TABLES")).fetchall()
+        print(f"Tables in `{db_name}`:")
+        for table in tables:
+            print(f"   └── {table[0]}")
 
     return timeinstance
