@@ -2,12 +2,7 @@
 set -e
 
 # === Configurable Variables ===
-MYSQL_ROOT_PASSWORD="rootpass"
-MYSQL_USER="devuser"
-MYSQL_USER_PASSWORD="devpass"
-MYSQL_DATABASE="mydatabase"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SQL_SCHEMA_FILE="${SCRIPT_DIR}/schema.sql"
+source .env
 
 # === Install Prerequisites ===
 echo "Installing prerequisites..."

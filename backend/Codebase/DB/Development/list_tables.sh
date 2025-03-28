@@ -1,10 +1,7 @@
 #!/bin/bash
 set -e
 
-# === Configurable Variables ===
-MYSQL_USER="devuser"
-MYSQL_PASSWORD="devpass"
-MYSQL_DATABASE="mydatabase"
+source .env
 
 # === List all tables ===
 echo "Listing all tables in database: $MYSQL_DATABASE"
