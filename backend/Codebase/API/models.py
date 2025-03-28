@@ -2,7 +2,8 @@
 from pydantic import BaseModel
 
 class HistoryInput(BaseModel):
-    googleID: int
+    googleID: str
+    timeInstance: str
 
 
 class SearchInput(BaseModel):

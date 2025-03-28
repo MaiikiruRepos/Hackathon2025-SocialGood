@@ -7,8 +7,8 @@ router = APIRouter()
 
 @router.post("/get_plant_carbon/")
 def get_plant_carbon(input_data: HistoryInput):
-    google_id = str(input_data.googleID)
-    time_instance = input_data.timeInstance
+    google_id:str = input_data.googleID
+    time_instance:str = input_data.timeInstance
     db_name = f"{google_id}-{time_instance}"
     result = {"plant": {}}
 
