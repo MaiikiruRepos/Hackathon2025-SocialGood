@@ -1,0 +1,25 @@
+/getPlantList/
+- Overview
+  - returns the plants inside of the timeinstance
+
+
+- Inputs
+{
+  "googleID": 303912932,
+  "timeInstance": "2024-03-28_04:41"
+}
+
+
+- Returns
+{
+  "plants": [
+    {
+      "location": "USA",
+      "plantnum": 1
+    },
+    {
+      "location": "Mexico",
+      "plantnum": 2
+    }
+  ]
+}

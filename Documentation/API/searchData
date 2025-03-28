@@ -1,0 +1,30 @@
+/searchData/
+- Overview
+  - returns data for the 'all list', used for the search bar.
+
+
+- Inputs
+{
+  "googleID": 303912932,
+  "timeInstance": "2024-03-28_04:41",
+  "searchBarData": "Apple",
+  "plantFilter": [1,2],
+  "maxReturns": 5
+}
+
+
+- Returns
+{
+  "sku":{
+    "00001":{
+      "Description": "example apple",
+      "CarbonLB": "56",
+      "WaterGal": "65"
+    },
+    "00002":{
+      "Description": "example pear",
+      "CarbonLB": "56",
+      "WaterGal": "65"
+    }
+  }
+}
