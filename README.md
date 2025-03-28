@@ -27,3 +27,7 @@ SQL_SCHEMA_FILE="${SCRIPT_DIR}/schema.sql"
 SCHEMA_DIR=backend/DB
 SQL_SCHEMA_FILE=schema.sql
 ```
+
+
+
+(venv) root@Hackathon:~/Hackathon2025-SocialGood/backend/Codebase/API# PYTHONPATH=. fastapi dev main.py
