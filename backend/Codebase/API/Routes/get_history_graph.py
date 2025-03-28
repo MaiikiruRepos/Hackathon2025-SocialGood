@@ -1,9 +1,11 @@
 # app/routes/history_graph.py
 import re
 from sqlalchemy import text
-from app.config import get_engine
+
 from fastapi import APIRouter
-from app.models import HistoryInput
+from config import get_engine
+from models import HistoryInput
+
 
 router = APIRouter()
 
