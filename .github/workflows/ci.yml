@@ -21,7 +21,7 @@ jobs:
           pip install pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run tests
-        run: pytest "tests/*.py"
+        run: pytest tests/*.py
 
   # This is a relatively general and expensive linting process.
   # Keep this in mind before you throw this at everything.
@@ -45,6 +45,9 @@ jobs:
           repository: MaiikiruRepos/.github
           sparse-checkout: .github/linters
           path: .github/linters
+        
+      - name: Configure Git safe directory
+        run: git config --global --add safe.directory /github/workspace
 
       - name: Lint Code Base
         uses: super-linter/super-linter@v7.3.0
