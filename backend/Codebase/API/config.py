@@ -9,7 +9,7 @@ load_dotenv(dotenv_path=env_path)
 
 DB_USER = os.getenv("MYSQL_USER")
 DB_PASS = os.getenv("MYSQL_USER_PASSWORD")
-DB_HOST = '172.18.0.2' #os.getenv("DB_HOST", "localhost")
+DB_HOST = os.getenv("MYSQL_HOST")
 DB_PORT = os.getenv("DB_PORT", "3306")
 
 def get_engine(db_name="information_schema"):
