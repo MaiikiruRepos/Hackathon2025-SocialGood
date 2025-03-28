@@ -6,7 +6,9 @@ MYSQL_ROOT_PASSWORD="rootpass"
 MYSQL_USER="devuser"
 MYSQL_USER_PASSWORD="devpass"
 MYSQL_DATABASE="mydatabase"
-SQL_SCHEMA_FILE="./schema.sql"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SQL_SCHEMA_FILE="${SCRIPT_DIR}/schema.sql"
+
 
 # === Install Prerequisites ===
 echo "Installing prerequisites..."
