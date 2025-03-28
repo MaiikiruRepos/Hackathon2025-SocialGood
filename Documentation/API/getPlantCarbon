@@ -1,0 +1,19 @@
+/getPlantCarbon/
+- Overview
+  - given a time-instance, returns data sutable for a pie chart plotting carbon %s for plant.
+
+
+- Inputs
+{
+  "googleID": 303912932,
+  "timeInstance": "2024-03-28_04:41"
+}
+
+
+- Returns
+{
+  "plant":{
+    "00001": 50,
+    "00002": 50
+  }
+}
