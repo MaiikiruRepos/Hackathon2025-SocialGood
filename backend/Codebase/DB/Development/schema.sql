@@ -1,5 +1,22 @@
+-- === Drop all existing tables (safe reset) ===
+SET FOREIGN_KEY_CHECKS = 0;
+
+SET @tables = NULL;
+SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
+FROM information_schema.tables
+WHERE table_schema = DATABASE();
+
+SET @tables = IFNULL(@tables, '');
+SET @drop_stmt = CONCAT('DROP TABLE IF EXISTS ', @tables);
+
+PREPARE stmt FROM @drop_stmt;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
 -- Create EnvTable first because others depend on it
-CREATE TABLE EnvTable (
+CREATE TABLE IF NOT EXISTS EnvTable (
     Location VARCHAR(100) PRIMARY KEY,
     gasCarbonLbPerGal DECIMAL(10,4),
     gasWaterGalPerGal DECIMAL(10,4),
@@ -12,7 +29,7 @@ CREATE TABLE EnvTable (
 ) ENGINE=InnoDB;
 
 -- Create Item next
-CREATE TABLE Item (
+CREATE TABLE IF NOT EXISTS Item (
     sku_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     subSKUID INT,
@@ -20,7 +37,7 @@ CREATE TABLE Item (
 ) ENGINE=InnoDB;
 
 -- Then Plant (depends on EnvTable and Item)
-CREATE TABLE Plant (
+CREATE TABLE IF NOT EXISTS Plant (
     plant_id INT AUTO_INCREMENT PRIMARY KEY,
     location VARCHAR(100),
     skuID INT,
@@ -29,7 +46,7 @@ CREATE TABLE Plant (
 ) ENGINE=InnoDB;
 
 -- Now the Process table (note backticks because "Process" is a MySQL keyword)
-CREATE TABLE `Process` (
+CREATE TABLE IF NOT EXISTS Processes (
     process_id INT AUTO_INCREMENT PRIMARY KEY,
     PlantID INT,
     processName VARCHAR(100) NOT NULL,
@@ -40,7 +57,7 @@ CREATE TABLE `Process` (
 ) ENGINE=InnoDB;
 
 -- Create ItemProcess (many-to-many between Item and Process)
-CREATE TABLE ItemProcess (
+CREATE TABLE IF NOT EXISTS ItemProcess (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     itemID INT,
     processID INT,
@@ -49,7 +66,7 @@ CREATE TABLE ItemProcess (
 ) ENGINE=InnoDB;
 
 -- Finally, PlantSKUQuantity (composite key, links Plant and Item)
-CREATE TABLE PlantSKUQuantity (
+CREATE TABLE IF NOT EXISTS PlantSKUQuantity (
     plant_id INT,
     sku_id INT,
     quantity INT NOT NULL,
