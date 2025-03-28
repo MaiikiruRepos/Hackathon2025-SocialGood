@@ -1,18 +1,29 @@
-import zipfile, os, tempfile
+import zipfile
+import tempfile
+from pathlib import Path
+
+import pandas as pd
 from fastapi import FastAPI, File, UploadFile
 from sqlalchemy import create_engine
-import pandas as pd
+from dotenv import load_dotenv
+
+import os
+
+# === Load .env from project root ===
+print("Loaded DB name:", os.getenv("MYSQL_DATABASE"))
+env_path = Path(__file__).resolve().parents[2] / '.env'
+load_dotenv(dotenv_path=env_path)
+
+DB_USER = os.getenv("MYSQL_USER")
+DB_PASS = os.getenv("MYSQL_USER_PASSWORD")
+DB_NAME = os.getenv("MYSQL_DATABASE")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "3306")
+
+# === Create SQLAlchemy engine ===
+engine = create_engine(f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
 
 app = FastAPI()
-
-# Update these with your actual MySQL config
-DB_USER = "devuser"
-DB_PASS = "devpass"
-DB_NAME = "mydatabase"
-DB_HOST = "localhost"
-DB_PORT = "3306"
-
-engine = create_engine(f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
 
 @app.post("/upload_zip/")
 async def upload_zip(file: UploadFile = File(...)):
