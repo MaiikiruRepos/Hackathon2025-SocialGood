@@ -1,8 +1,14 @@
 import React from 'react'
+import BusinessHero from '../components/businessComponents/BusinessHero'
 
-function Business() {
-    return <h1>Business Page</h1>;
-  }
+
+const Business = () => {
+  return(
+    <div>
+      <BusinessHero />
+    </div>
+  )
+}
   
   export default Business;
   
