@@ -33,13 +33,20 @@ async def upload_zip(
 
         # 2. Loop through CSV files and insert them
         for entry in os.listdir(tmpdir):
+            print(f"Found file in tmpdir: {entry}")
+
             if entry.endswith(".csv"):
                 table_name = entry.replace(".csv", "")
                 csv_path = os.path.join(tmpdir, entry)
-                print(f"Inserting {csv_path} into table {table_name}...")
+                print(f"Processing CSV: {csv_path} → table `{table_name}`")
+
                 try:
                     df = pd.read_csv(csv_path)
+                    print(f"Read CSV with {len(df)} rows and columns: {df.columns.tolist()}")
+
                     df.to_sql(table_name, con=engine, if_exists="append", index=False)
+                    print(f"Inserted {len(df)} rows into `{table_name}`")
+
                 except Exception as e:
                     print(f"Failed to insert {table_name}: {e}")
                     return {"error": str(e)}

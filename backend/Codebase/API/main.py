@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from .Routes import (get_history_graph, upload_zip, get_ratings,
                      get_plant_list, get_plant_carbon, get_plant_water,
                      get_search_data, convert_bom, generate_config,
-                     drop_user_databases_api)
+                     drop_user_databases_api, print_db_contents_api)
 
 app = FastAPI()
 
@@ -17,3 +17,4 @@ app.include_router(get_search_data.router)
 app.include_router(convert_bom.router)
 app.include_router(generate_config.router)
 app.include_router(drop_user_databases_api.router)
+app.include_router(print_db_contents_api.router)
