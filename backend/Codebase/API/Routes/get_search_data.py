@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from sqlalchemy import text
-from config import get_engine
-from models import SearchInput
+from ..config import get_engine
+from ..models import SearchInput
 
 router = APIRouter()
 

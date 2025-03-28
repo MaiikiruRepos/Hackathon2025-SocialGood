@@ -1,6 +1,6 @@
 # app/main.py
 from fastapi import FastAPI
-from Routes import (get_history_graph, upload_zip, get_ratings,
+from .Routes import (get_history_graph, upload_zip, get_ratings,
                     get_plant_list, get_plant_carbon, get_plant_water,
                     get_search_data, convert_bom, generate_config,
                     test_api)
