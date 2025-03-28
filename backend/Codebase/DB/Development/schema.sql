@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS ItemProcess (
     itemID INT,
     processID INT,
     FOREIGN KEY (itemID) REFERENCES Item(sku_id),
-    FOREIGN KEY (processID) REFERENCES `Process`(process_id)
+    FOREIGN KEY (processID) REFERENCES Processes(process_id)
 ) ENGINE=InnoDB;
 
 -- Finally, PlantSKUQuantity (composite key, links Plant and Item)
