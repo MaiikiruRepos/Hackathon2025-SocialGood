@@ -31,7 +31,7 @@ async def upload_zip(file: UploadFile = File(...)):
         return {"error": "File must be a .zip archive"}
 
     with tempfile.TemporaryDirectory() as tmpdir:
-        zip_path = os.path.join(tmpdir, file.filename)
+        zip_path:str = os.path.join(tmpdir, file.filename)
         with open(zip_path, "wb") as f:
             f.write(await file.read())
 
@@ -40,14 +40,26 @@ async def upload_zip(file: UploadFile = File(...)):
 
         for entry in os.listdir(tmpdir):
             if entry.endswith(".csv"):
-                table_name = entry.replace(".csv", "")
-                csv_path = os.path.join(tmpdir, entry)
+                table_name:str = entry.replace(".csv", "")
+                csv_path:str = os.path.join(tmpdir, entry)
                 print(f"Inserting {csv_path} into table {table_name}...")
                 try:
-                    df = pd.read_csv(csv_path)
+                    df:pd.DataFrame = pd.read_csv(csv_path)
                     df.to_sql(table_name, con=engine, if_exists="append", index=False)
                 except Exception as e:
                     print(f"Failed to insert {table_name}: {e}")
                     return {"error": str(e)}
 
     return {"message": "All CSVs imported successfully."}
+
+@app.get("/plantwater/")
+def plant_water() -> None:
+    pass
+
+@app.get("/plantcarbon")
+def plant_carbon() -> None:
+    pass
+
+@app.get("Dosomething")
+def do_something() -> None:
+    pass
