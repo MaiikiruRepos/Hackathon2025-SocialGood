@@ -29,15 +29,4 @@ jobs:
       - name: Run tests
         run: pytest tests/*.py
 
-  # This is a relatively general and expensive linting process.
-  # Keep this in mind before you throw this at everything.
-  lint:
-    runs-on: self-hosted
-    permissions:
-      contents: read
-      packages: read
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       
