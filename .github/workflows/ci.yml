@@ -45,9 +45,6 @@ jobs:
           repository: MaiikiruRepos/.github
           sparse-checkout: .github/linters
           path: .github/linters
-        
-      - name: Configure Git safe directory
-        run: git config --global --add safe.directory /github/workspace
 
       - name: Lint Code Base
         uses: super-linter/super-linter@v7.3.0
