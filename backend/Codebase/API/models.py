@@ -15,4 +15,9 @@ class SingleInput(BaseModel):
 
 
 class SearchInput(BaseModel):
-    pass
+    googleID: str
+    timeInstance: str
+    searchBarData: str
+    plantFilter: list[int]
+    returnStartNum: int
+    returnEndNum: int
