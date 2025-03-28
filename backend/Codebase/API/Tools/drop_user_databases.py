@@ -4,7 +4,7 @@ import re
 from sqlalchemy import text
 from ..config import get_engine
 
-db_pattern = re.compile(r'^\d{6,}-\d{4}-\d{2}-\d{2}_\d{2}:\d{2}$')
+db_pattern = re.compile(r'^\d+-\d{4}-\d{2}-\d{2}_\d{2}:\d{2}$')
 
 def drop_user_databases():
     engine = get_engine("mysql")

@@ -11,7 +11,7 @@ router = APIRouter()
 @router.post("/upload_zip/")
 async def upload_zip(
     file: UploadFile = File(...),
-    googleID: int = Form(...)
+    googleID: str = Form(...)
 ):
     if not file.filename.endswith(".zip"):
         return {"error": "File must be a .zip archive"}
