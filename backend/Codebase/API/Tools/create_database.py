@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, text
 from datetime import datetime
 import os
 
-from backend.Codebase.API.config import get_engine
+from config import get_engine
 
 # === Get schema file path ===
 SCRIPT_DIR = os.getenv("SCHEMA_DIR", "backend/DB")
