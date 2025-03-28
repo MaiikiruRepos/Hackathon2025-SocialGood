@@ -1,7 +1,7 @@
-/getPlantCarbon/
+/getPlantWater/
 - Overview
-  - given a time-instance, returns data sutable for a pie chart plotting carbon %s for plant.
-
+  - given a time-instance, returns data sutable for a pie chart plotting water %s for plant.
+  - USED FOR PLANT WATER PIE CHART
 
 - Inputs
 {

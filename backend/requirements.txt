@@ -2,3 +2,4 @@ fastapi[all]
 sqlalchemy
 pandas
 python-dotenv
+pydantic

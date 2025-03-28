@@ -74,3 +74,17 @@ CREATE TABLE IF NOT EXISTS PlantSKUQuantity (
     FOREIGN KEY (plant_id) REFERENCES Plant(plant_id),
     FOREIGN KEY (sku_id) REFERENCES Item(sku_id)
 ) ENGINE=InnoDB;
+
+-- Create SkuScore table
+CREATE TABLE IF NOT EXISTS SkuScore (
+    sku_id INT PRIMARY KEY,
+    carbonScore DECIMAL(10,2),
+    waterScore DECIMAL(10,2),
+    FOREIGN KEY (sku_id) REFERENCES Item(sku_id)
+) ENGINE=InnoDB;
+
+-- Create Overall table
+CREATE TABLE IF NOT EXISTS OverallScore (
+    carbonScore DECIMAL(10,2),
+    waterScore DECIMAL(10,2)
+) ENGINE=InnoDB;

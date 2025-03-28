@@ -1,6 +1,8 @@
 /searchData/
 - Overview
-  - returns data for the 'all list', used for the search bar.
+  - returns data for the 'all list', used for the search section.
+  - website bundles all filters and settings
+  - returns all of the data to be displayed on the sku list website
 
 
 - Inputs
@@ -9,7 +11,8 @@
   "timeInstance": "2024-03-28_04:41",
   "searchBarData": "Apple",
   "plantFilter": [1,2],
-  "maxReturns": 5
+  "returnStartNum": 1,
+  "returnEndNum": 100
 }
 
 

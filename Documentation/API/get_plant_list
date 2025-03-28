@@ -1,6 +1,8 @@
 /getPlantList/
 - Overview
   - returns the plants inside of the timeinstance
+  - Used for the 'filter' section of search function. To get the
+   list of tables the user can select from.
 
 
 - Inputs

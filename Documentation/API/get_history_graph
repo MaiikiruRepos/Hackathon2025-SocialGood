@@ -1,0 +1,25 @@
+/get_history_graph/
+- Overview
+  - Given A user, Returns the stats of all of their checks
+  - USED FOR HISTORY GRAPH VISUAL
+
+
+- Inputs
+{
+  "googleID": 303912932
+}
+
+
+- Returns
+{
+  "plant":{
+    "2024-03-28_04:41": {
+        "carbon": 451,
+        "water": 356
+        },
+    "2024-02-15_03:31": {
+        "carbon": 234,
+        "water": 246
+        }
+  }
+}
