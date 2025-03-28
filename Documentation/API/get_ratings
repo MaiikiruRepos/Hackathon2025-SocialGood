@@ -1,4 +1,4 @@
-/getRatings/
+/get_ratings/
 - Overview
   - Given A user, and time instance, Returns the stats of all of their checks
   - USED to get user ratings. Direct query to skuscoretable

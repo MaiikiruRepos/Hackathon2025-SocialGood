@@ -1,4 +1,4 @@
-/getPlantCarbon/
+/get_plant_carbon/
 - Overview
   - given a time-instance, returns data sutable for a pie chart plotting carbon %s for plant.
   - USED FOR PLANT CARBON PIE CHART

@@ -1,4 +1,4 @@
-/searchData/
+/search_data/
 - Overview
   - returns data for the 'all list', used for the search section.
   - website bundles all filters and settings
@@ -18,16 +18,34 @@
 
 - Returns
 {
-  "sku":{
-    "00001":{
-      "Description": "example apple",
-      "CarbonLB": "56",
-      "WaterGal": "65"
+  "plant": {
+    "00001": {
+      "sku": {
+        "001": {
+          "Description": "example apple",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        },
+        "002": {
+          "Description": "example pear",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        }
+      }
     },
-    "00002":{
-      "Description": "example pear",
-      "CarbonLB": "56",
-      "WaterGal": "65"
+    "00002": {
+      "sku": {
+        "001": {
+          "Description": "example apple",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        },
+        "002": {
+          "Description": "example pear",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        }
+      }
     }
   }
 }

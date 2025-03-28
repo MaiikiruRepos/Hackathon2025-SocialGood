@@ -1,4 +1,4 @@
-/getPlantWater/
+/get_plant_water/
 - Overview
   - given a time-instance, returns data sutable for a pie chart plotting water %s for plant.
   - USED FOR PLANT WATER PIE CHART

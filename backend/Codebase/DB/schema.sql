@@ -77,9 +77,11 @@ CREATE TABLE IF NOT EXISTS PlantSKUQuantity (
 
 -- Create SkuScore table
 CREATE TABLE IF NOT EXISTS SkuScore (
-    sku_id INT PRIMARY KEY,
+    sku_id INT,
+    plant_id INT,
     carbonScore DECIMAL(10,2),
     waterScore DECIMAL(10,2),
+    PRIMARY KEY (plant_id, sku_id),
     FOREIGN KEY (sku_id) REFERENCES Item(sku_id)
 ) ENGINE=InnoDB;
 
@@ -87,4 +89,12 @@ CREATE TABLE IF NOT EXISTS SkuScore (
 CREATE TABLE IF NOT EXISTS OverallScore (
     carbonScore DECIMAL(10,2),
     waterScore DECIMAL(10,2)
+) ENGINE=InnoDB;
+
+-- Create PieChartData table
+CREATE TABLE IF NOT EXISTS PieChartData (
+    plant_id INT PRIMARY KEY,
+    carbon_percent DECIMAL(5,2),
+    water_percent DECIMAL(5,2),
+    FOREIGN KEY (plant_id) REFERENCES Plant(plant_id)
 ) ENGINE=InnoDB;
