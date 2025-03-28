@@ -2,7 +2,8 @@
 set -e
 
 # === Configurable Variables ===
-source .env
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+source "${SCRIPT_DIR%%/backend*}/backend/.env"
 
 # === Install Prerequisites ===
 echo "Installing prerequisites..."

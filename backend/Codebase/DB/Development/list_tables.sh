@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-source .env
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+source "${SCRIPT_DIR%%/backend*}/backend/.env"
 
 # === List all tables ===
 echo "Listing all tables in database: $MYSQL_DATABASE"
