@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Exit immediately if a command exits with a non-zero status
 set -e
 
 # === Configurable Variables ===
@@ -10,12 +8,24 @@ MYSQL_USER_PASSWORD="devpass"
 MYSQL_DATABASE="mydatabase"
 SQL_SCHEMA_FILE="./schema.sql"
 
-# === Install MySQL Server ===
-echo "Updating package list and installing MySQL server..."
+# === Install Prerequisites ===
+echo "Installing prerequisites..."
 sudo apt-get update
+sudo apt-get install -y wget gnupg lsb-release
+
+# === Add MySQL APT Repo ===
+echo "Adding official MySQL APT repository..."
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
+sudo DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.29-1_all.deb
+
+# Choose default (hit Enter if prompted)
+sudo apt-get update
+
+# === Install MySQL Server ===
+echo "Installing MySQL server..."
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
 
-# === Start MySQL Service ===
+# === Start and Enable MySQL Service ===
 echo "Starting MySQL service..."
 sudo systemctl start mysql
 sudo systemctl enable mysql
@@ -43,4 +53,4 @@ else
     echo "No schema file found at ${SQL_SCHEMA_FILE}. Skipping schema deployment."
 fi
 
-echo "✅ MySQL installation and setup complete."
+echo "MySQL installation and setup complete."
