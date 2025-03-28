@@ -9,11 +9,10 @@ MYSQL_DATABASE="mydatabase"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SQL_SCHEMA_FILE="${SCRIPT_DIR}/schema.sql"
 
-
 # === Install Prerequisites ===
 echo "Installing prerequisites..."
 sudo apt-get update
-sudo apt-get install -y wget gnupg lsb-release
+sudo apt-get install -y wget gnupg lsb-release ufw
 
 # === Add MySQL APT Repo (only if missing) ===
 if ! dpkg -s mysql-apt-config >/dev/null 2>&1; then
@@ -27,9 +26,14 @@ fi
 echo "Installing MySQL server..."
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
 
+# === Enable LAN access ===
+echo "Configuring MySQL to allow LAN connections..."
+MYSQL_CNF="/etc/mysql/mysql.conf.d/mysqld.cnf"
+sudo sed -i "s/^bind-address.*/bind-address = 0.0.0.0/" "$MYSQL_CNF"
+
 # === Start and Enable MySQL Service ===
 echo "Starting MySQL service..."
-sudo systemctl start mysql
+sudo systemctl restart mysql
 sudo systemctl enable mysql
 
 # === Test root login ===
@@ -69,11 +73,13 @@ FLUSH PRIVILEGES;
 EOF
 
 # === Create New Database and User ===
-echo "Creating new database and user..."
+echo "Creating new database and user (local + LAN access)..."
 mysql -u root -p"${MYSQL_ROOT_PASSWORD}" <<EOF
 CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
 CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_USER_PASSWORD}';
+CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_USER_PASSWORD}';
 GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'localhost';
+GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
 
@@ -85,4 +91,8 @@ else
     echo "No schema file found at ${SQL_SCHEMA_FILE}. Skipping schema deployment."
 fi
 
-echo "MySQL installation and setup complete."
+# === Allow MySQL Port on Firewall ===
+echo "Allowing MySQL port 3306 on firewall..."
+sudo ufw allow 3306/tcp
+
+echo "MySQL installation and LAN access setup complete."
