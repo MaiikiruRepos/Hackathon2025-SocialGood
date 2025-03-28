@@ -1,0 +1,17 @@
+/upload_zip/
+- Overview
+  - provides a zipped set of CSV files to upload
+  - builds a new database and loads the data.
+  - database name is: {googleID}-{timeInstance}
+
+
+- Inputs
+zipped set of CSV files
+
+
+- Returns
+?
+
+opt1 - nothing
+
+opt2 - the database name

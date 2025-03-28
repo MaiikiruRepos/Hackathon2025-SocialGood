@@ -1,0 +1,13 @@
+/generate_config/
+- Overview
+  - Takes in an EXCEL file, tries to generate the config.yaml file.
+  - used to then call /convert_bom/.
+  - Needs to be flushed out more
+
+
+- Inputs
+EXCELL FILE
+
+
+- Returns
+config.yaml file

@@ -173,5 +173,6 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 .idea
-
+/bom_converter/input/
+bom_converter/output/
 .env

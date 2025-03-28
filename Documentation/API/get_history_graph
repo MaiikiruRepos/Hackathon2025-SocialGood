@@ -12,7 +12,7 @@
 
 - Returns
 {
-  "plant":{
+  "instance":{
     "2024-03-28_04:41": {
         "carbon": 451,
         "water": 356

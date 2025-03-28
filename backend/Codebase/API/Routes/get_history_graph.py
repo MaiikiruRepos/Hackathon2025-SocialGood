@@ -31,7 +31,7 @@ def get_history_graph(input_data: HistoryInput):
                     score = user_conn.execute(
                         text("SELECT carbonScore, waterScore FROM OverallScore LIMIT 1")).fetchone()
                     if score:
-                        result["plant"][timestamp] = {
+                        result["instance"][timestamp] = {
                             "carbon": float(score[0]),
                             "water": float(score[1])
                         }
