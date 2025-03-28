@@ -2,7 +2,7 @@
 set -e
 
 # === Configurable Variables ===
-source .env
+source "$(dirname "$0")/../../../.env"
 
 # === Install Prerequisites ===
 echo "Installing prerequisites..."
