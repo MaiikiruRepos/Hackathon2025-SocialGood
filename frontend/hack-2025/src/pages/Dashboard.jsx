@@ -39,7 +39,6 @@ const Dashboard = () => {
 <div>
     <Navbar />
     <HeroDash />
-    <HeroReportChart />
     <div className = 'bg-white min-h screen'>
         <SkuTable rawData={mockData} />
     </div>

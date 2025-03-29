@@ -1,35 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { FiChevronDown } from 'react-icons/fi'
-import ScoreCircle from './ScoreCircle'
+import React, { useEffect, useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
+import ScoreCircle from './ScoreCircle';
+import HeroReportChart from './HeroReportCharts'; // Import HeroReportChart
+import { Line } from 'react-chartjs-2'; // Import Line chart from react-chartjs-2
+import { Chart as ChartJS } from 'chart.js/auto'; // Import chart.js
 
-const HeroDash = ({ name = 'User', googleID = '000001' }) => {
-  const [scores, setScores] = useState({ carbon: 0, water: 0 })
-  const [latestTimestamp, setLatestTimestamp] = useState('')
+const HeroDash = ({ name = 'User', googleID = '1' }) => {
+  const [scores, setScores] = useState({ carbon: 0, water: 0 });
+  const [latestTimestamp, setLatestTimestamp] = useState('');
+  const [historyData, setHistoryData] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        // Step 1: Get all timestamps
         const timeRes = await fetch('http://localhost:8000/get_all_timestamps/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ googleID }),
-        })
+        });
 
-        const timeData = await timeRes.json()
-        const timestamps = timeData.timestamps
+        const timeData = await timeRes.json();
+        const timestamps = timeData.timestamps;
 
         if (!Array.isArray(timestamps) || timestamps.length === 0) {
-          console.warn('No timestamps found')
-          return
+          setError('No timestamps found');
+          return;
         }
 
-        const latest = timestamps[timestamps.length - 1]
-        setLatestTimestamp(latest)
+        const latest = timestamps[timestamps.length - 1];
+        setLatestTimestamp(latest);
 
-        // Step 2: Use latest timestamp to fetch score data
         const scoreRes = await fetch('http://localhost:8000/get_ratings/', {
           method: 'POST',
           headers: {
@@ -39,17 +42,61 @@ const HeroDash = ({ name = 'User', googleID = '000001' }) => {
             googleID,
             timeInstance: latest,
           }),
-        })
+        });
 
-        const scoreData = await scoreRes.json()
-        setScores(scoreData)
+        const scoreData = await scoreRes.json();
+        setScores(scoreData);
       } catch (err) {
-        console.error('Failed to fetch score data:', err)
+        console.error('Failed to fetch score data:', err);
+        setError('Failed to fetch score data');
       }
-    }
+    };
 
-    fetchScores()
-  }, [googleID])
+    const fetchHistoryData = async () => {
+      try {
+        const historyRes = await fetch('http://localhost:8000/get_history_graph/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ googleID }),
+        });
+
+        const historyData = await historyRes.json();
+        setHistoryData(historyData.instance || {});
+      } catch (err) {
+        console.error('Failed to fetch history data:', err);
+        setError('Failed to fetch history data');
+      }
+    };
+
+    fetchScores();
+    fetchHistoryData();
+  }, [googleID]);
+
+  const processHistoryData = () => {
+    const labels = Object.keys(historyData);
+    const carbonData = labels.map((label) => historyData[label].carbon);
+    const waterData = labels.map((label) => historyData[label].water);
+
+    return {
+      labels,
+      datasets: [
+        {
+          label: 'Carbon',
+          data: carbonData,
+          borderColor: '#00C49F',
+          fill: false,
+        },
+        {
+          label: 'Water',
+          data: waterData,
+          borderColor: '#0088FE',
+          fill: false,
+        },
+      ],
+    };
+  };
 
   return (
     <div className='w-full rounded-sm shadow-md py-16 px-4'>
@@ -81,8 +128,23 @@ const HeroDash = ({ name = 'User', googleID = '000001' }) => {
           </div>
         </div>
       </div>
-    </div>
-  )
-}
 
-export default HeroDash
+      {/* HeroReportChart Component */}
+      {latestTimestamp && (
+        <HeroReportChart googleID={googleID} timeInstance={latestTimestamp} />
+      )}
+
+      {/* History Graph */}
+      <div className="mt-12 bg-[#1A1A1A] rounded-xl shadow-lg p-8">
+        <h3 className="text-white text-xl font-semibold mb-6">History Graph</h3>
+        {Object.keys(historyData).length > 0 ? (
+          <Line data={processHistoryData()} />
+        ) : (
+          <p className="text-white">No history data available.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default HeroDash;
