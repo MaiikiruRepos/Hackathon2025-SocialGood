@@ -1,10 +1,12 @@
 import React, { useCallback, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useNavigate } from 'react-router-dom';
 
 const API_BASE = 'http://localhost:8000'
 
 const DropzoneUpload = () => {
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const zipFile = acceptedFiles[0];
@@ -28,7 +30,7 @@ const DropzoneUpload = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Success:', data);
-        // navigate('/dashboard') if needed
+        navigate('/dashboard') //if needed
       } else {
         console.error('Upload failed');
       }
