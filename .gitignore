@@ -172,3 +172,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+.idea
+/bom_converter/input/
+bom_converter/output/
+.env
+/backend/demo/bulkdata/all_themes_output/*
+/backend/demo/charts_output/*
+
+/backend/demo/heatmap/charts_output/*

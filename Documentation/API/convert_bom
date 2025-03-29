@@ -1,0 +1,19 @@
+/convert_bom/
+- Overview
+  - Takes in an EXCEL file and a CONFIG.yaml file.
+  - Converts the excel file into multiple .csv files that align to our tables
+  - can be zipped and added to /upload_zip/
+
+
+- Inputs
+EXCELL FILE
+CONFIG.yaml file
+
+
+- Returns
+tbd?
+
+opt1
+returns the zipped .csv files
+opt2
+just loads into db

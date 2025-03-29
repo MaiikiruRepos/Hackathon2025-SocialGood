@@ -1,0 +1,27 @@
+/get_plant_list/
+- Overview
+  - returns the plants inside of the timeinstance
+  - Used for the 'filter' section of search function. To get the
+   list of tables the user can select from.
+
+
+- Inputs
+{
+  "googleID": 303912932,
+  "timeInstance": "2024-03-28_04:41"
+}
+
+
+- Returns
+{
+  "plants": [
+    {
+      "location": "USA",
+      "plant_id": 1
+    },
+    {
+      "location": "Mexico",
+      "plant_id": 2
+    }
+  ]
+}

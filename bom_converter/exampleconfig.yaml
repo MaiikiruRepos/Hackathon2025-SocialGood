@@ -1,0 +1,34 @@
+item:
+  sheet: "Material Pricing"
+  columns:
+    sku_id: "Component Part Number"
+    name: "Description"
+  default:
+    subSKUID: null
+    processID: null
+
+plant:
+  sheet: "07-THELE-0000902 - 1"
+  columns:
+    location: "Scenario Site"
+    skuID: "Component Part Number"
+
+processes:
+  sheet: "Labor and Overhead"
+  columns:
+    processName: "Category"
+    employeeCount: "Total IDL Minutes Unit"
+    electricCount: "Scenario MFG Other Unit"
+    GasCount: "Gas Placeholder"
+
+item_process:
+  link_by: sku_id
+  from_sheets:
+    - "Labor and Overhead"
+
+plant_sku_quantity:
+  sheet: "07-THELE-0000902 - 1"
+  columns:
+    plant_id: "Site Code"
+    sku_id: "Component Part Number"
+    quantity: "Buy Part Qty"

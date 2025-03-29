@@ -1,0 +1,17 @@
+/get_ratings/
+- Overview
+  - Given A user, and time instance, Returns the stats of all of their checks
+  - USED to get user ratings. Direct query to skuscoretable
+
+- Inputs
+{
+  "googleID": 303912932,
+  "timeInstance": "2024-03-28_04:41"
+}
+
+
+- Returns
+{
+    "carbon": 451,
+    "water": 356
+}

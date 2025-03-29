@@ -1,0 +1,139 @@
+===========================
+ DATABASE SCHEMA DOCUMENTATION
+===========================
+
+---------------------------
+1. EnvTable
+---------------------------
+Stores environmental impact rates for each country.
+
+- country_code    (VARCHAR(10))   PRIMARY KEY - Unique country identifier
+- country_name    (VARCHAR(100))  Full country name
+- continent       (VARCHAR(50))   Continent name
+- gas_cr          (FLOAT)         Gas consumption rate
+- gas_wr          (FLOAT)         Gas waste rate
+- diesel_cr       (FLOAT)         Diesel consumption rate
+- diesel_wr       (FLOAT)         Diesel waste rate
+- elec_cr         (FLOAT)         Electricity consumption rate
+- elec_wr         (FLOAT)         Electricity waste rate
+- employee_cr     (FLOAT)         Carbon impact per employee
+- employee_wr     (FLOAT)         Water impact per employee
+
+
+---------------------------
+2. Plant
+---------------------------
+Stores factory or site locations and associated country.
+
+- plant_id        (INT)           PRIMARY KEY
+- country_code    (VARCHAR(10))   FOREIGN KEY → EnvTable.country_code
+
+
+---------------------------
+3. Sku
+---------------------------
+Stores product/item definitions.
+
+- sku_id          (INT)           PRIMARY KEY
+- sku_name        (VARCHAR(100))  Name of the SKU
+
+
+---------------------------
+4. ProcessDefinition
+---------------------------
+Defines reusable standard processes.
+
+- process_id      (INT)           PRIMARY KEY
+- process_name    (VARCHAR(100))  Descriptive name
+
+
+---------------------------
+5. Process
+---------------------------
+Stores site-specific process data for each plant.
+
+- site_process_id (INT)           PRIMARY KEY
+- plant_id        (INT)           FOREIGN KEY → Plant.plant_id
+- process_id      (INT)           FOREIGN KEY → ProcessDefinition.process_id
+- employee_count  (INT)           
+- gas_count       (FLOAT)
+- elec_rate       (FLOAT)
+- diesel_count    (FLOAT)
+
+
+---------------------------
+6. SkuBOM
+---------------------------
+Recursive table for SKU bill of materials (BOM).
+
+- parent_sku_id   (INT)           FOREIGN KEY → Sku.sku_id
+- child_sku_id    (INT)           FOREIGN KEY → Sku.sku_id
+- quantity        (INT)
+- PRIMARY KEY     (parent_sku_id, child_sku_id)
+
+
+---------------------------
+7. SkuProcess
+---------------------------
+Bridge table connecting SKUs and Processes (many-to-many).
+
+- sku_id          (INT)           FOREIGN KEY → Sku.sku_id
+- process_id      (INT)           FOREIGN KEY → Process.site_process_id
+- PRIMARY KEY     (sku_id, process_id)
+
+
+---------------------------
+8. PlantSKUQuantity
+---------------------------
+Stores the quantity of each SKU produced at each plant.
+
+- plant_id        (INT)           FOREIGN KEY → Plant.plant_id
+- sku_id          (INT)           FOREIGN KEY → Sku.sku_id
+- quantity        (INT)
+- PRIMARY KEY     (plant_id, sku_id)
+
+
+---------------------------
+9. SkuScore
+---------------------------
+Tracks carbon and water impact scores for SKUs per plant.
+
+- sku_id          (INT)           FOREIGN KEY → Sku.sku_id
+- plant_id        (INT)           FOREIGN KEY → Plant.plant_id
+- carbon_score    (FLOAT)
+- water_score     (FLOAT)
+- PRIMARY KEY     (sku_id, plant_id)
+
+
+---------------------------
+10. OverallScore
+---------------------------
+Singleton table for total environmental impact.
+
+- id              (TINYINT)       PRIMARY KEY (always 1)
+- carbon_score    (FLOAT)
+- water_score     (FLOAT)
+
+
+---------------------------
+11. PieChartData
+---------------------------
+Stores per-plant chartable impact percentages.
+
+- plant_id        (INT)           PRIMARY KEY, FOREIGN KEY → Plant.plant_id
+- carbon_percent  (FLOAT)
+- water_percent   (FLOAT)
+
+
+===========================
+ RELATIONSHIP OVERVIEW
+===========================
+
+- Plant → EnvTable.country_code
+- Plant → used in: Process, PlantSKUQuantity, SkuScore, PieChartData
+- Sku → used in: SkuBOM (recursive), SkuProcess, PlantSKUQuantity, SkuScore
+- Process → links Plant and ProcessDefinition
+- SkuProcess → many-to-many between Sku and Process
+- SkuBOM → recursive structure for SKU components
+- OverallScore → singleton (always one row with id = 1)
+

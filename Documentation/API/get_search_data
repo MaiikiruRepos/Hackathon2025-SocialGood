@@ -1,0 +1,51 @@
+/search_data/
+- Overview
+  - returns data for the 'all list', used for the search section.
+  - website bundles all filters and settings
+  - returns all of the data to be displayed on the sku list website
+
+
+- Inputs
+{
+  "googleID": 303912932,
+  "timeInstance": "2024-03-28_04:41",
+  "searchBarData": "Apple",
+  "plantFilter": [1,2],
+  "returnStartNum": 1,
+  "returnEndNum": 100
+}
+
+
+- Returns
+{
+  "plant": {
+    "00001": {
+      "sku": {
+        "001": {
+          "Description": "example apple",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        },
+        "002": {
+          "Description": "example pear",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        }
+      }
+    },
+    "00002": {
+      "sku": {
+        "001": {
+          "Description": "example apple",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        },
+        "002": {
+          "Description": "example pear",
+          "CarbonLB": "56",
+          "WaterGal": "65"
+        }
+      }
+    }
+  }
+}

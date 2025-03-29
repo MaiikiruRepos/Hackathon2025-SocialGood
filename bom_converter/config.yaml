@@ -1,0 +1,33 @@
+item:
+  columns:
+    name: Description
+    sku_id: Component Part Number
+  default:
+    processID: null
+    subSKUID: null
+  sheet: Material Pricing
+item_process:
+  from_sheets:
+  - Labor and Overhead
+  link_by: sku_id
+plant:
+  columns:
+    location: null
+    skuID: Part Number
+  default:
+    location: MONTERREY, MX
+  sheet: Source Bill of Materials
+plant_sku_quantity:
+  columns:
+    quantity: Part Qty
+    sku_id: Part Number
+  default:
+    plant_id: 1
+  sheet: Source Bill of Materials
+processes:
+  sheet: "Labor and Overhead"
+  columns:
+    processName: "Description"  # or "Name" if you prefer
+    employeeCount: "Total IDL Minutes Unit"
+    electricCount: "Scenario MFG Other Unit"
+    GasCount: "Scenario MFG Other Unit"  # reuse or adjust if needed
