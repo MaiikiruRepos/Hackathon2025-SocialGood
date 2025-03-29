@@ -10,13 +10,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-black'>
-      <h1 className='w-full text-3xl font-bold text-black'>EarthCost</h1>
+    <div className='sticky top-0 z-50 shadow-sm bg-black'>
+    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
+      <h1 className='w-full text-3xl font-bold text-[#00A86B]'>Ecopulse.</h1>
       <ul className='hidden md:flex'>
-        <li className='p-4 hover:underline underline-offset-4 cursor-pointer'><Link to="/">Home</Link></li>
-        <li className='p-4 hover:underline underline-offset-4 cursor-pointer'><Link to="/business">Businesses</Link></li>
-        <li className='p-4 hover:underline underline-offset-4 cursor-pointer'><Link to="/individual">Individuals</Link></li>
-        <li className='p-4 hover:underline underline-offset-4 cursor-pointer'><Link to="/dashboard">Dashboard</Link></li>
+        <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/">Home</Link></li>
+        <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/business">Businesses</Link></li>
+        <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/individual">Individuals</Link></li>
+        <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/dashboard">Dashboard</Link></li>
       </ul>
       <div onClick={handleNav} className='block md:hidden'>
           {nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20} />}
@@ -28,6 +29,7 @@ const Navbar = () => {
           <li className='p-4 border-b border-gray-600'><Link to="/individual" onClick={handleNav}>Individual</Link></li>
           <li className='p-4 '><Link to="/dashboard" onClick={handleNav}>Dashboard</Link></li>
       </ul>
+    </div>
     </div>
   );
 };

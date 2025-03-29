@@ -10,12 +10,12 @@ const ScoreCircle = ({ label, value, max = 1000, color = '#00C49F' }) => {
 
   const data = [
     { name: 'progress', value: percentage, fill: color },
-    { name: 'max', value: 100, fill: '#2d2d2d' }, // background ring
+    { name: 'max', value: 100, fill: '#FFFFFF' }, // background ring
   ];
 
   return (
-    <div className="flex flex-col items-center w-[150px]">
-      <ResponsiveContainer width={150} height={150}>
+    <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]">
+      <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           innerRadius="70%"
           outerRadius="100%"
@@ -30,10 +30,10 @@ const ScoreCircle = ({ label, value, max = 1000, color = '#00C49F' }) => {
           />
         </RadialBarChart>
       </ResponsiveContainer>
-      <div className="text-center mt-2">
-        <p className="text-white text-sm font-medium">{label}</p>
-        <p className="text-amber-400 text-lg font-bold">
-          {value} / {max}
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <p className="text-white text-xl font-semibold">{label}</p>
+        <p className="text-white text-xl font-bold">
+          {value}
         </p>
       </div>
     </div>
