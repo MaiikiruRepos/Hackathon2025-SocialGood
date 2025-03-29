@@ -98,7 +98,7 @@ const Hero = () => {
             </Link>
             <Link to="/individual">
               <button className="bg-[#00A86B] text-[#1A1A1A] w-[200px] rounded-md font-medium py-3 hover:scale-105 transition-all duration-300 ease-in-out">
-                For Individuals
+                Global Overview
               </button>
             </Link>
           </div>
