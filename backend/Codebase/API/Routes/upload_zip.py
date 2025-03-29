@@ -5,7 +5,7 @@ import pandas as pd
 from ..Tools.verify_csv_matches_table_schema import verify_csv_matches_table_schema
 from ..config import get_engine
 from ..Tools.create_database import create_database
-from ..Tools.load_enviromental_data import load_environmental_data  # <-- Import it
+from ..Tools.load_enviromental_data import load_environmental_data
 
 router = APIRouter()
 
@@ -17,10 +17,16 @@ async def upload_zip(
     if not file.filename.endswith(".zip"):
         return {"error": "File must be a .zip archive"}
 
-    # 1. Create new database for this googleID
+    # 1. Create new database
     timeinstance = create_database(googleID)
     db_name = f"{googleID}-{timeinstance}"
     engine = get_engine(db_name)
+
+    # 2. Load static environmental data
+    try:
+        load_environmental_data(db_name)
+    except Exception as e:
+        return {"error": f"Could not load EnvTable: {str(e)}"}
 
     with tempfile.TemporaryDirectory() as tmpdir:
         # Save uploaded ZIP file
@@ -28,33 +34,40 @@ async def upload_zip(
         with open(zip_path, "wb") as f:
             f.write(await file.read())
 
-        # Extract ZIP contents
+        # Extract contents
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(tmpdir)
 
-        # 2. Loop through and validate CSVs before inserting
-        for entry in os.listdir(tmpdir):
-            if entry.endswith(".csv"):
-                table_name = entry.replace(".csv", "")
-                csv_path = os.path.join(tmpdir, entry)
+        # 3. Define priority order (excluding EnvTable.csv)
+        priority_order = [
+            "Sku.csv",
+            "Plant.csv",
+            "Item.csv",
+            "ProcessDefinition.csv",
+            "Process.csv",
+            "ItemProcess.csv",
+            "PlantSKUQuantity.csv",
+            "SkuProcess.csv"
+        ]
 
-                try:
-                    df = pd.read_csv(csv_path)
+        # 4. Sort files according to priority
+        csv_files = sorted(
+            [f for f in os.listdir(tmpdir) if f.endswith(".csv")],
+            key=lambda x: priority_order.index(x) if x in priority_order else 999
+        )
 
-                    # Verify schema match before insertion
-                    verify_csv_matches_table_schema(engine, table_name, df)
+        # 5. Loop through and process in order
+        for entry in csv_files:
+            table_name = entry.replace(".csv", "")
+            csv_path = os.path.join(tmpdir, entry)
 
-                    # Insert into DB
-                    df.to_sql(table_name, con=engine, if_exists="append", index=False)
+            try:
+                df = pd.read_csv(csv_path)
+                verify_csv_matches_table_schema(engine, table_name, df)
+                df.to_sql(table_name, con=engine, if_exists="append", index=False)
 
-                except Exception as e:
-                    return {"error": f"{entry}: {str(e)}"}
-
-    # 3. Load static environmental data
-    try:
-        load_environmental_data(db_name)
-    except Exception as e:
-        return {"error": f"Could not load EnvTable: {str(e)}"}
+            except Exception as e:
+                return {"error": f"{entry}: {str(e)}"}
 
     return {
         "message": "All CSVs imported successfully, EnvTable loaded.",

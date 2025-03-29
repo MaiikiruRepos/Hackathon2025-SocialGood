@@ -28,21 +28,21 @@ CREATE TABLE IF NOT EXISTS Sku (
 
 -- Create ProcessDefinition (referenced by Process)
 CREATE TABLE IF NOT EXISTS ProcessDefinition (
-    process_id INT PRIMARY KEY,  -- Shared type ID (e.g. 1 = Raw Material)
+    process_id INT PRIMARY KEY,
     process_name VARCHAR(100)
 );
 
--- Create Process (referenced by SkuProcess)
+-- Create Process (references Plant and ProcessDefinition)
 CREATE TABLE IF NOT EXISTS Process (
-    definition_id INT PRIMARY KEY,     -- Unique per row
+    process_id INT PRIMARY KEY,
     plant_id INT,
-    process_id INT,                    -- FK to ProcessDefinition
+    definition_id INT,
     employee_count INT,
     gas_count FLOAT,
     elec_rate FLOAT,
     diesel_count FLOAT,
     FOREIGN KEY (plant_id) REFERENCES Plant(plant_id),
-    FOREIGN KEY (process_id) REFERENCES ProcessDefinition(process_id)
+    FOREIGN KEY (definition_id) REFERENCES ProcessDefinition(process_id)
 );
 
 -- Create SkuBOM (recursive reference to Sku)
@@ -55,13 +55,13 @@ CREATE TABLE IF NOT EXISTS SkuBOM (
     FOREIGN KEY (child_sku_id) REFERENCES Sku(sku_id)
 );
 
--- Create SkuProcess (bridge table between Sku and unique Process rows)
+-- Create SkuProcess (bridge table between Sku and Process)
 CREATE TABLE IF NOT EXISTS SkuProcess (
     sku_id VARCHAR(50),
     process_id INT,
     PRIMARY KEY (sku_id, process_id),
     FOREIGN KEY (sku_id) REFERENCES Sku(sku_id),
-    FOREIGN KEY (process_id) REFERENCES ProcessDefinition(process_id)
+    FOREIGN KEY (process_id) REFERENCES Process(process_id)
 );
 
 -- Create PlantSKUQuantity (plant + sku production quantities)
@@ -85,14 +85,12 @@ CREATE TABLE IF NOT EXISTS SkuScore (
     FOREIGN KEY (plant_id) REFERENCES Plant(plant_id)
 );
 
--- Create singleton score for all SKUs
 CREATE TABLE IF NOT EXISTS OverallScore (
-    id TINYINT PRIMARY KEY DEFAULT 1,
+    id TINYINT PRIMARY KEY DEFAULT 1,  -- fixed singleton ID
     carbon_score FLOAT,
     water_score FLOAT
 );
 
--- Per-plant pie chart visualization table
 CREATE TABLE IF NOT EXISTS PieChartData (
     plant_id INT PRIMARY KEY,
     carbon_percent FLOAT,

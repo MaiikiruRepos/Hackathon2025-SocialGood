@@ -1,4 +1,4 @@
-﻿countryCode,countryName,continent,gasCarbonLbPerGal,gasWaterGalPerGal,dieselCarbonLbPerGal,dieselWaterLbPerGal,elecCarbonLbPerKwh,elecWaterGalPerKwh,employeeCarbonLbPer,employeeWaterGalPer
+﻿country_code,country_name,continent,gas_cr,gas_wr,diesel_cr,diesel_wr,elec_cr,elec_wr,employee_cr,employee_wr
 AD,Andorra,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
 AE,United Arab Emirates,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
 AF,Afghanistan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
