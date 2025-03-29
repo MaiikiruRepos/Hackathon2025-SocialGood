@@ -7,9 +7,11 @@ from ..config import get_engine
 
 SCRIPT_DIR = get_schema_path()
 
-def create_database(google_id: int) -> str:
-    timeinstance = datetime.now().strftime("%Y-%m-%d_%H:%M")
-    db_name = f"{google_id}-{timeinstance}"
+def create_database(google_ID, timeinstance=None) -> str:
+    if timeinstance is None:
+        timeinstance = datetime.now().strftime("%Y-%m-%d_%H-%M")
+
+    db_name = f"{google_ID}-{timeinstance}"
     print(f"Creating database: {db_name}")
 
     admin_engine = get_engine("mysql")

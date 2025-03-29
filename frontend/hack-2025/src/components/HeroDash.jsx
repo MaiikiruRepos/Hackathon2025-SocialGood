@@ -1,18 +1,63 @@
-import React from 'react'
-import {
-    RadialBarChart,
-    RadialBar,
-    Legend,
-    ResponsiveContainer,
-    Tooltip
-} from 'recharts'
+import React, { useEffect, useState } from 'react'
 import{FiChevronDown} from 'react-icons/fi'
 import ScoreCircle from './ScoreCircle';
 
 
 
-const HeroDash = ({ name = 'User '}) => {
-//placeholder for API Data
+const HeroDash = ({ name = 'User ', googleID = '000001'}) => {
+
+const [scores, setScores] = useState({ carbon: 0, water: 0});
+const [latestTimestamp, setLatestTimestamp] = useState('') //constant for latest time stamp
+
+useEffect(() => {
+    const fetchScores = async () => {
+        try{
+            //get those timestamps
+            const timeRes = await fetch('http://localhost:8000/get_all_timestamps/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ googleID })
+            })
+
+            const timeData = await timeRes.json()
+            const timestamps = timeData.timestamps
+
+            if(timestamps.length ==0){
+                console.warn('No timestamps found')
+                return
+            }
+
+            const latest = timestamps[timestamps.length -1]
+            setLatestTimestamp(latest)
+
+
+            //get those scores with that latest timestamp
+            const scoreRes = await fetch('http://localhost:8000/get_ratings/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  googleID: googleID,
+                  timeInstance: latest, //updated to latest timestamp
+                }),
+              });
+
+        
+        const scoreData = await scoreRes.json();
+        setScores(scoreData);
+        } catch(err){
+        console.error('Failed to fetch score data:', err);
+        }
+    };
+
+    fetchScores();
+
+}, [googleID]);
+
+//placeholder for API Data SCORE DATA
 const carbon = 451
 const water = 300
 
@@ -27,10 +72,10 @@ const water = 300
 
                 <div className="flex flex-col md:flex-row justify-center items-center gap-8 p-4">
                     <div className="flex justify-center">
-                        <ScoreCircle label="Carbon" value={carbon} color="#00C49F" />
+                        <ScoreCircle label="Carbon" value={scores.carbon} color="#00C49F" />
                     </div>
                     <div className="flex justify-center]">
-                        <ScoreCircle label="Water" value={water} color="#0088FE" />
+                        <ScoreCircle label="Water" value={scores.water} color="#0088FE" />
                     </div>
                 </div>
             </div>

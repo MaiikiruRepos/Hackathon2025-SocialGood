@@ -16,7 +16,7 @@ const Navbar = () => {
       <ul className='hidden md:flex'>
         <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/">Home</Link></li>
         <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/business">Businesses</Link></li>
-        <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/individual">Individuals</Link></li>
+        <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/global">Global</Link></li>
         <li className='p-4 hover:underline underline-offset-4 cursor-pointer font-semibold'><Link to="/dashboard">Dashboard</Link></li>
       </ul>
       <div onClick={handleNav} className='block md:hidden'>
@@ -26,7 +26,7 @@ const Navbar = () => {
         <h1 className='w-full text-3xl font-bold text-black m-4'>EarthCost</h1>
           <li className='p-4 border-b border-gray-600'><Link to="/" onClick={handleNav}>Home</Link></li>
           <li className='p-4 border-b border-gray-600'><Link to="/business" onClick={handleNav}>Business</Link></li>
-          <li className='p-4 border-b border-gray-600'><Link to="/individual" onClick={handleNav}>Individual</Link></li>
+          <li className='p-4 border-b border-gray-600'><Link to="/global" onClick={handleNav}>Global</Link></li>
           <li className='p-4 '><Link to="/dashboard" onClick={handleNav}>Dashboard</Link></li>
       </ul>
     </div>
