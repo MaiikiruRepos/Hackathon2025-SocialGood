@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroDash from '../components/HeroDash';
 import Navbar from '../components/Navbar';
 import HeroReportChart from '../components/HeroReportCharts';
@@ -33,21 +33,24 @@ const mockData = {
 };
 
 const Dashboard = () => {
-  const [googleID, setGoogleID] = useState('');
-  const [updatedData, setUpdatedData] = useState(mockData);  // State to store updated data
+  const [googleID, setGoogleID] = useState('000001'); // Default to "1"
+  const [updatedData, setUpdatedData] = useState(mockData);
+
+  const updateDataForGoogleID = (id) => {
+    if (id) {
+      const updatedMockData = JSON.parse(JSON.stringify(mockData)); // deep copy
+      updatedMockData.plant["00001"].sku["001"].Description = `Updated Apple for ${id}`;
+      updatedMockData.plant["00002"].sku["001"].Description = `Updated Banana for ${id}`;
+      setUpdatedData(updatedMockData);
+    }
+  };
+
+  useEffect(() => {
+    updateDataForGoogleID(googleID);
+  }, [googleID]);
 
   const handleGoogleIDChange = (e) => {
-    const newGoogleID = e.target.value;
-    setGoogleID(newGoogleID);
-
-    // Update the data based on googleID
-    if (newGoogleID) {
-      const updatedMockData = { ...mockData };
-      updatedMockData.plant["00001"].sku["001"].Description = `Updated Apple for ${newGoogleID}`;
-      updatedMockData.plant["00002"].sku["001"].Description = `Updated Banana for ${newGoogleID}`;
-
-      setUpdatedData(updatedMockData);  // Update state with new data
-    }
+    setGoogleID(e.target.value);
   };
 
   return (
