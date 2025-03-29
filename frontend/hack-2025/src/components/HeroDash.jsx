@@ -4,28 +4,50 @@ import ScoreCircle from './ScoreCircle';
 
 
 
-const HeroDash = ({ name = 'User ', googleID = '0001'}) => {
+const HeroDash = ({ name = 'User ', googleID = '000001'}) => {
 
 const [scores, setScores] = useState({ carbon: 0, water: 0});
+const [latestTimestamp, setLatestTimestamp] = useState('') //constant for latest time stamp
 
 useEffect(() => {
     const fetchScores = async () => {
         try{
+            //get those timestamps
+            const timeRes = await fetch('http://localhost:8000/get_all_timestamps/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ googleID })
+            })
 
-            const res = await fetch('http://localhost:8000/get_ratings/', {
+            const timeData = await timeRes.json()
+            const timestamps = timeData.timestamps
+
+            if(timestamps.length ==0){
+                console.warn('No timestamps found')
+                return
+            }
+
+            const latest = timestamps[timestamps.length -1]
+            setLatestTimestamp(latest)
+
+
+            //get those scores with that latest timestamp
+            const scoreRes = await fetch('http://localhost:8000/get_ratings/', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                   googleID: googleID,
-                  timeInstance: '2025-03-29_03:17', // Replace later
+                  timeInstance: latest, //updated to latest timestamp
                 }),
               });
 
         
-        const data = await res.json();
-        setScores(data);
+        const scoreData = await scoreRes.json();
+        setScores(scoreData);
         } catch(err){
         console.error('Failed to fetch score data:', err);
         }
