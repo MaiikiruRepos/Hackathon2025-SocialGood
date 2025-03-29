@@ -4,13 +4,12 @@ from sqlalchemy import text
 
 from fastapi import APIRouter
 from ..config import get_engine
-from ..models import HistoryInput
-
+from ..models import OnlyGoogle
 
 router = APIRouter()
 
 @router.post("/get_history_graph/")
-def get_history_graph(input_data: HistoryInput):
+def get_history_graph(input_data: OnlyGoogle):
     google_id = str(input_data.googleID)
     result = {"plant": {}}
     pattern = re.compile(f"^{google_id}-(\\d{{4}}-\\d{{2}}-\\d{{2}}_\\d{{2}}:\\d{{2}})$")

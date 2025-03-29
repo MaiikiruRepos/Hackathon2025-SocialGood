@@ -1,13 +1,13 @@
 from fastapi import APIRouter
 from sqlalchemy import text
 from ..config import get_engine
-from ..models import HistoryInput
+from ..models import GoogleTime
 
 router = APIRouter()
 
 @router.post("/get_plant_list/")
-def get_plant_list(input_data: HistoryInput) -> dict:
-    google_id: str = str(input_data.googleID)
+def get_plant_list(input_data: GoogleTime) -> dict:
+    google_id: str = input_data.googleID
     time_instance: str = input_data.timeInstance
     db_name: str = f"{google_id}-{time_instance}"
     result: dict = {"plants": []}

@@ -1,12 +1,12 @@
 from fastapi import APIRouter
 from sqlalchemy import text
 from ..config import get_engine
-from ..models import SingleInput
+from ..models import GoogleTime
 
 router = APIRouter()
 
 @router.post("/get_ratings/")
-def get_ratings(input_data: SingleInput):
+def get_ratings(input_data: GoogleTime):
     google_id: str = str(input_data.googleID)
     time_instance: str = input_data.timeInstance
     db_name: str = f"{google_id}-{time_instance}"
