@@ -1,0 +1,7 @@
+process_id,process_name
+1,Soldering
+2,Pick-and-Place
+3,Etching
+4,Inspection
+5,Reflow
+6,AOI Testing

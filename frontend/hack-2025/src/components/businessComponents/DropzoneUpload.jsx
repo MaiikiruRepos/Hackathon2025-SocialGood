@@ -1,10 +1,12 @@
 import React, { useCallback, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useNavigate } from 'react-router-dom';
 
 const API_BASE = 'http://localhost:8000'
 
 const DropzoneUpload = () => {
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const zipFile = acceptedFiles[0];
@@ -28,7 +30,7 @@ const DropzoneUpload = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Success:', data);
-        // navigate('/dashboard') if needed
+        navigate('/dashboard') //if needed
       } else {
         console.error('Upload failed');
       }
@@ -49,7 +51,7 @@ const DropzoneUpload = () => {
       <input {...getInputProps()} className="hidden" />
       <button
         type="button"
-        className='bg-amber-950 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white hover:scale-105 transition-all duration-300 ease-in-out'
+        className='bg-[#00A86B] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white hover:scale-105 transition-all duration-300 ease-in-out'
         onClick={open}
       >
         Upload Your BOM/File
