@@ -10,7 +10,7 @@ const HeroDash = ({ name = 'User', googleID = '000001' }) => {
     const fetchScores = async () => {
       try {
         // Step 1: Get all timestamps
-        const timeRes = await fetch('http://localhost:8000/get_all_timestamps/', {
+        const timeRes = await fetch('https://gamer.naliwajka.com/get_all_timestamps/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const HeroDash = ({ name = 'User', googleID = '000001' }) => {
         setLatestTimestamp(latest)
 
         // Step 2: Use latest timestamp to fetch score data
-        const scoreRes = await fetch('http://localhost:8000/get_ratings/', {
+        const scoreRes = await fetch('https://gamer.naliwajka.com/get_ratings/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

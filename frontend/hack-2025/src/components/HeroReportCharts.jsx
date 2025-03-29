@@ -23,14 +23,14 @@ const HeroReportChart = ({googleID = '000001', timeInstance = ''}) => {
         const fetchPlantData = async () => {
             try{
                 const [carbonRes, waterRes] = await Promise.all([
-                    fetch('http://localhost:8000/get_plant_carbon/',{
+                    fetch('https://gamer.naliwajka.com/get_plant_carbon/',{
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({ googleID, timeInstance }),
                     }),
-                    fetch('http://localhost:8000/get_plant_water/', {
+                    fetch('https://gamer.naliwajka.com/get_plant_water/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

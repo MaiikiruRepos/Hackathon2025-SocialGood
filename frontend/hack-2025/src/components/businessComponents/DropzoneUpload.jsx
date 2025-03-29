@@ -20,7 +20,7 @@ const DropzoneUpload = () => {
     console.log(zipFile.name, zipFile.type);
 
     try {
-      const response = await fetch('http://localhost:8000/upload_zip/', {
+      const response = await fetch('https://gamer.naliwajka.com/upload_zip/', {
         method: 'POST',
         body: formData,
       });
