@@ -15,7 +15,7 @@ def get_ratings(input_data: GoogleTime):
     try:
         with get_engine(db_name).connect() as conn:
             score = conn.execute(
-                text("SELECT carbonScore, waterScore FROM OverallScore LIMIT 1")
+                text("SELECT carbon_score, water_score FROM OverallScore LIMIT 1;")
             ).fetchone()
             if score:
                 result["carbon"] = float(score[0])
