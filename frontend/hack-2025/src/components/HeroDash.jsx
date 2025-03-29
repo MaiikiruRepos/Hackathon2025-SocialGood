@@ -1,58 +1,46 @@
 import React from 'react'
 import {
-    PieChart,
-    Pie,
-    Cell,
+    RadialBarChart,
+    RadialBar,
+    Legend,
     ResponsiveContainer,
     Tooltip
 } from 'recharts'
 import{FiChevronDown} from 'react-icons/fi'
+import ScoreCircle from './ScoreCircle';
 
 
-//placeholder for API Data
-const data = [
-    { name: 'Used', value: 75},
-    { name: 'Remaining', value: 25}
-];
-
-const COLORS = ['#00C49F', '#FFBB28']
 
 const HeroDash = ({ name = 'User '}) => {
+//placeholder for API Data
+const carbon = 451
+const water = 300
+
+
     return (
         <div className='w-full bg-black py-16 px-4'>
             <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
 
             {/*Left score chart */}
-            <div className='flex justify-center'>
-                <ResponsiveContainer width={250} height={250}>
-                    <PieChart>
-                        <Pie
-                        data = {data}
-                        dataKey="value"
-                        nameKey="name"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={100}
-                        fill="#8884d8"
-                        label
-                    >
-                    {data.map((entry, index) => (
-                        <Cell key={'cell-${index}'} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                        </Pie>
-                        <Tooltip />
-                    </PieChart>
-                </ResponsiveContainer>
+            <div className=' w-full h-[300px] flex justify-center'>
+            <ScoreCircle label="Carbon" value={carbon} color="#00C49F" />
+            <ScoreCircle label="Water" value={water} color="#0088FE" />
             </div>
 
 
 
                 {/* Right message */}
-
-                <div>
-
+                <div className = 'flex flex-col justify-center text-center md:text-left px-6'>
+                    <h2 className='text-3xl md:text-4xl font-bold mb-2 text-white'>
+                        Welcome, {name}
+                    </h2>
+                    <p className='text-lg text-gray-300'>
+                        Scroll to see your full report and breakdown.
+                    </p>
+                    <div className='mt-6 flex justify-center md:justify-start'>
+                        <FiChevronDown size={32} className="text-amber-500 animate-bbounce" />
+                    </div>
                 </div>
-
             </div>
         </div>
     );
