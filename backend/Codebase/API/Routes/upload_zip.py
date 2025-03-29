@@ -44,7 +44,7 @@ async def upload_zip(
                     print(f"Read CSV with {len(df)} rows and columns: {df.columns.tolist()}")
 
                     df.to_sql(table_name, con=engine, if_exists="append", index=False)
-                    print(f"Inserted {len(df)} rows into {table_name}")
+                    # print(f"Inserted {len(df)} rows into {table_name}")
 
                 except Exception as e:
                     print(f"Failed to insert {table_name}: {e}")
@@ -53,7 +53,7 @@ async def upload_zip(
     # 3. Load static environmental data into EnvTable
     try:
         load_environmental_data(db_name)
-        print(f"Loaded environmental data into {db_name}")
+        # print(f"Loaded environmental data into {db_name}")
     except Exception as e:
         print(f"Failed to load environmental data: {e}")
         return {"error": f"Could not load EnvTable: {str(e)}"}

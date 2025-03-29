@@ -1,47 +1,45 @@
 import csv
 import os
-from sqlalchemy import create_engine, text
-from dotenv import load_dotenv
-from ..config import get_engine
-
-# Load environment variables from .env
-load_dotenv()
+from sqlalchemy import text
+from ..config import get_engine  # <-- Use your shared config function
 
 def load_environmental_data(database_name: str):
-    # Set up the SQLAlchemy engine
-    # user = os.getenv("MYSQL_USER")
-    # password = os.getenv("MYSQL_PASSWORD")
-    # host = os.getenv("MYSQL_HOST", "localhost")
-    # port = os.getenv("MYSQL_PORT", "3306")
+    engine = get_engine(database_name)  # <-- Get engine using shared method
+    print(f"[DEBUG] Engine created for DB: {database_name}")
 
-    # db_url = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database_name}"
-    # engine = create_engine(db_url)
-
-    engine = get_engine(database_name)
-
-    # CSV path (relative to this script)
+    # Corrected path to match your actual CSV
     csv_path = os.path.join(os.path.dirname(__file__), "..", "..", "DB", "enviromentData.csv")
+    csv_path = os.path.abspath(csv_path)
+    print(f"[DEBUG] Loading CSV from: {csv_path}")
 
-    # Read CSV and insert data
-    with engine.connect() as conn:
-        with open(csv_path, newline='') as csvfile:
+    if not os.path.exists(csv_path):
+        print("[ERROR] CSV file does not exist.")
+        return
+
+    with engine.begin() as conn:  # automatically commits at end
+        with open(csv_path, newline='', encoding='utf-8-sig') as csvfile:
             reader = csv.DictReader(csvfile)
-            for row in reader:
-                insert_sql = text("""
-                    INSERT INTO EnvTable (
-                        countryCode, countryName, continent,
-                        gasCarbonLbPerGal, gasWaterGalPerGal,
-                        dieselCarbonLbPerGal, dieselWaterLbPerGal,
-                        elecCarbonLbPerKwh, elecWaterGalPerKwh,
-                        employeeCarbonLbPer, employeeWaterGalPer
-                    ) VALUES (
-                        :countryCode, :countryName, :continent,
-                        :gasCarbonLbPerGal, :gasWaterGalPerGal,
-                        :dieselCarbonLbPerGal, :dieselWaterLbPerGal,
-                        :elecCarbonLbPerKwh, :elecWaterGalPerKwh,
-                        :employeeCarbonLbPer, :employeeWaterGalPer
-                    )
-                """)
-                conn.execute(insert_sql, row)
+            reader.fieldnames = [col.strip().replace('\ufeff', '') for col in reader.fieldnames]
 
-    print(f"Environmental data successfully loaded into '{database_name}'.")
+            for row in reader:
+                print(f"[DEBUG] Inserting row: {row}")
+                try:
+                    insert_sql = text("""
+                        INSERT INTO EnvTable (
+                            countryCode, countryName, continent,
+                            gasCarbonLbPerGal, gasWaterGalPerGal,
+                            dieselCarbonLbPerGal, dieselWaterLbPerGal,
+                            elecCarbonLbPerKwh, elecWaterGalPerKwh,
+                            employeeCarbonLbPer, employeeWaterGalPer
+                        ) VALUES (
+                            :countryCode, :countryName, :continent,
+                            :gasCarbonLbPerGal, :gasWaterGalPerGal,
+                            :dieselCarbonLbPerGal, :dieselWaterLbPerGal,
+                            :elecCarbonLbPerKwh, :elecWaterGalPerKwh,
+                            :employeeCarbonLbPer, :employeeWaterGalPer
+                        )
+                    """)
+                    conn.execute(insert_sql, row)
+                except Exception as e:
+                    print(f"[ERROR] Failed to insert row: {row}")
+                    print(f"[ERROR] Exception: {e}")
