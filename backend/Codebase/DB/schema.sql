@@ -1,86 +1,99 @@
--- Create EnvTable first because others depend on it
+-- Create EnvTable first (referenced by Plant)
 CREATE TABLE IF NOT EXISTS EnvTable (
-    countryCode VARCHAR(10) PRIMARY KEY,
-    countryName VARCHAR(100),
+    country_code VARCHAR(10) PRIMARY KEY,
+    country_name VARCHAR(100),
     continent VARCHAR(50),
-    gasCarbonLbPerGal DECIMAL(10,4),
-    gasWaterGalPerGal DECIMAL(10,4),
-    dieselCarbonLbPerGal DECIMAL(10,4),
-    dieselWaterLbPerGal DECIMAL(10,4),
-    elecCarbonLbPerKwh DECIMAL(10,4),
-    elecWaterGalPerKwh DECIMAL(10,4),
-    employeeCarbonLbPer DECIMAL(10,4),
-    employeeWaterGalPer DECIMAL(10,4)
-) ENGINE=InnoDB;
+    gas_cr FLOAT,
+    gas_wr FLOAT,
+    diesel_cr FLOAT,
+    diesel_wr FLOAT,
+    elec_cr FLOAT,
+    elec_wr FLOAT,
+    employee_cr FLOAT,
+    employee_wr FLOAT
+);
 
--- Create Item next
-CREATE TABLE IF NOT EXISTS Item (
-    sku_id INT PRIMARY KEY,
-    sku_name VARCHAR(100) NOT NULL,
-    subSKUID INT,
-    processID INT
-) ENGINE=InnoDB;
-
--- Then Plant (depends on EnvTable and Item)
+-- Create Plant (references EnvTable)
 CREATE TABLE IF NOT EXISTS Plant (
     plant_id INT PRIMARY KEY,
-    location VARCHAR(100),
-    skuID INT,
-    FOREIGN KEY (location) REFERENCES EnvTable(countryCode),
-    FOREIGN KEY (skuID) REFERENCES Item(sku_id)
-) ENGINE=InnoDB;
+    country_code VARCHAR(10),
+    FOREIGN KEY (country_code) REFERENCES EnvTable(country_code)
+);
 
--- Now the Process table (note backticks because "Process" is a MySQL keyword)
-CREATE TABLE IF NOT EXISTS Processes (
+-- Create Sku (standalone)
+CREATE TABLE IF NOT EXISTS Sku (
+    sku_id INT PRIMARY KEY,
+    sku_name VARCHAR(100)
+);
+
+-- Create ProcessDefinition (referenced by Process)
+CREATE TABLE IF NOT EXISTS ProcessDefinition (
     process_id INT PRIMARY KEY,
-    PlantID INT,
-    processName VARCHAR(100) NOT NULL,
-    employeeCount INT,
-    electricCount DECIMAL(10,2),
-    GasCount DECIMAL(10,2),
-    DieselCount DECIMAL(10,2),
-    FOREIGN KEY (PlantID) REFERENCES Plant(plant_id)
-) ENGINE=InnoDB;
+    process_name VARCHAR(100)
+);
 
--- Create ItemProcess (many-to-many between Item and Process)
-CREATE TABLE IF NOT EXISTS ItemProcess (
-    process_ID INT PRIMARY KEY,
-    itemID INT,
-    processID INT,
-    FOREIGN KEY (itemID) REFERENCES Item(sku_id),
-    FOREIGN KEY (processID) REFERENCES Processes(process_id)
-) ENGINE=InnoDB;
+-- Create Process (references Plant and ProcessDefinition)
+CREATE TABLE IF NOT EXISTS Process (
+    site_process_id INT PRIMARY KEY,
+    plant_id INT,
+    process_id INT,
+    employee_count INT,
+    gas_count FLOAT,
+    elec_rate FLOAT,
+    diesel_count FLOAT,
+    FOREIGN KEY (plant_id) REFERENCES Plant(plant_id),
+    FOREIGN KEY (process_id) REFERENCES ProcessDefinition(process_id)
+);
 
--- Finally, PlantSKUQuantity (composite key, links Plant and Item)
+-- Create SkuBOM (recursive reference to Sku)
+CREATE TABLE IF NOT EXISTS SkuBOM (
+    parent_sku_id INT,
+    child_sku_id INT,
+    quantity INT,
+    PRIMARY KEY (parent_sku_id, child_sku_id),
+    FOREIGN KEY (parent_sku_id) REFERENCES Sku(sku_id),
+    FOREIGN KEY (child_sku_id) REFERENCES Sku(sku_id)
+);
+
+-- Create SkuProcess (bridge table between Sku and Process)
+CREATE TABLE IF NOT EXISTS SkuProcess (
+    sku_id INT,
+    process_id INT,
+    PRIMARY KEY (sku_id, process_id),
+    FOREIGN KEY (sku_id) REFERENCES Sku(sku_id),
+    FOREIGN KEY (process_id) REFERENCES Process(site_process_id)
+);
+
+-- Create PlantSKUQuantity (plant + sku production quantities)
 CREATE TABLE IF NOT EXISTS PlantSKUQuantity (
     plant_id INT,
     sku_id INT,
-    quantity INT NOT NULL,
+    quantity INT,
     PRIMARY KEY (plant_id, sku_id),
     FOREIGN KEY (plant_id) REFERENCES Plant(plant_id),
-    FOREIGN KEY (sku_id) REFERENCES Item(sku_id)
-) ENGINE=InnoDB;
+    FOREIGN KEY (sku_id) REFERENCES Sku(sku_id)
+);
 
 -- Create SkuScore table
 CREATE TABLE IF NOT EXISTS SkuScore (
     sku_id INT,
     plant_id INT,
-    carbonScore DECIMAL(10,2),
-    waterScore DECIMAL(10,2),
-    PRIMARY KEY (plant_id, sku_id),
-    FOREIGN KEY (sku_id) REFERENCES Item(sku_id)
-) ENGINE=InnoDB;
+    carbon_score FLOAT,
+    water_score FLOAT,
+    PRIMARY KEY (sku_id, plant_id),
+    FOREIGN KEY (sku_id) REFERENCES Sku(sku_id),
+    FOREIGN KEY (plant_id) REFERENCES Plant(plant_id)
+);
 
--- Create Overall table
 CREATE TABLE IF NOT EXISTS OverallScore (
-    carbonScore DECIMAL(10,2),
-    waterScore DECIMAL(10,2)
-) ENGINE=InnoDB;
+    id TINYINT PRIMARY KEY DEFAULT 1,  -- fixed singleton ID
+    carbon_score FLOAT,
+    water_score FLOAT
+);
 
--- Create PieChartData table
 CREATE TABLE IF NOT EXISTS PieChartData (
     plant_id INT PRIMARY KEY,
-    carbon_percent DECIMAL(5,2),
-    water_percent DECIMAL(5,2),
+    carbon_percent FLOAT,
+    water_percent FLOAT,
     FOREIGN KEY (plant_id) REFERENCES Plant(plant_id)
-) ENGINE=InnoDB;
+);
