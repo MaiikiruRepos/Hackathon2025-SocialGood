@@ -6,7 +6,21 @@ from .Routes import (get_history_graph, upload_zip, get_ratings,
                      drop_user_databases_api, print_db_contents_api,
                      test_api)
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+origins = [
+    "http://localhost:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(get_history_graph.router)
 app.include_router(upload_zip.router)
