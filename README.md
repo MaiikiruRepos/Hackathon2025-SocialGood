@@ -1,4 +1,4 @@
-# Hackathon2025-SocialGood
+# 2025 Hackathon for Social Good
 
 ## A Quick prelude on Notation:
 I will put the shell type before the command.<br>
