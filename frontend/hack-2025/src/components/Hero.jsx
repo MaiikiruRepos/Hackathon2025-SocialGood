@@ -96,7 +96,7 @@ const Hero = () => {
                 For Businesses
               </button>
             </Link>
-            <Link to="/individual">
+            <Link to="/global">
               <button className="bg-[#00A86B] text-[#1A1A1A] w-[200px] rounded-md font-medium py-3 hover:scale-105 transition-all duration-300 ease-in-out">
                 Global Overview
               </button>
