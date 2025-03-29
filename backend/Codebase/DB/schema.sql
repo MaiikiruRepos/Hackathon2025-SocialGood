@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS Processes (
 
 -- Create ItemProcess (many-to-many between Item and Process)
 CREATE TABLE IF NOT EXISTS ItemProcess (
-    ID INT PRIMARY KEY,
+    process_ID INT PRIMARY KEY,
     itemID INT,
     processID INT,
     FOREIGN KEY (itemID) REFERENCES Item(sku_id),
