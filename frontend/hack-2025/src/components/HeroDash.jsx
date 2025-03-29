@@ -4,7 +4,7 @@ import ScoreCircle from './ScoreCircle';
 
 
 
-const HeroDash = ({ name = 'User ', googleID = '000001'}) => {
+const HeroDash = ({ name = 'User ', googleID = '0001'}) => {
 
 const [scores, setScores] = useState({ carbon: 0, water: 0});
 const [latestTimestamp, setLatestTimestamp] = useState('') //constant for latest time stamp
@@ -18,7 +18,7 @@ useEffect(() => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ googleID })
+                body: JSON.stringify({ googleID: '0001' })
             })
 
             const timeData = await timeRes.json()
@@ -29,8 +29,11 @@ useEffect(() => {
                 return
             }
 
-            const latest = timestamps[timestamps.length -1]
-            setLatestTimestamp(latest)
+
+            if (Array.isArray(timestamps) && timestamps.length > 0) {
+                const latest = timestamps[timestamps.length - 1];
+                setLatestTimestamp(latest)
+              }
 
 
             //get those scores with that latest timestamp
