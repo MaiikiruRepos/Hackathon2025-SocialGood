@@ -1,0 +1,7 @@
+process_id,process_name
+1,Data Collection
+2,Model Training
+3,Hyperparameter Tuning
+4,Model Deployment
+5,Inference Testing
+6,Performance Monitoring

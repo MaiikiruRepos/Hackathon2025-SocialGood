@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import pulse from '/src/assets/pulse-removebg-preview.png';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -13,8 +14,8 @@ const Navbar = () => {
     <div className='sticky top-0 z-50 shadow-sm bg-[#1A1A1A]'>
       <div className='flex justify-between items-center h-20 max-w-[1240px] mx-auto px-4 text-white'>
         {/* Make "Ecopulse." clickable and route to home page */}
-        <Link to="/" className='w-full text-3xl font-bold text-[#00A86B]'>
-          Ecopulse
+        <Link to="/" className='w-auto h-auto flex items-center'>
+          <img src={pulse} alt="Ecopulse Logo" className="h-50 w-auto" />
         </Link>
 
         <ul className='hidden md:flex'>
