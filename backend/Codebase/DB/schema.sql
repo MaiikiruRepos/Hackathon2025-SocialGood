@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS EnvTable (
 
 -- Create Item next
 CREATE TABLE IF NOT EXISTS Item (
-    sku_id INT AUTO_INCREMENT PRIMARY KEY,
+    sku_id INT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     subSKUID INT,
     processID INT
@@ -23,16 +23,16 @@ CREATE TABLE IF NOT EXISTS Item (
 
 -- Then Plant (depends on EnvTable and Item)
 CREATE TABLE IF NOT EXISTS Plant (
-    plant_id INT AUTO_INCREMENT PRIMARY KEY,
+    plant_id INT PRIMARY KEY,
     location VARCHAR(100),
     skuID INT,
-    FOREIGN KEY (location) REFERENCES EnvTable(Location),
+    FOREIGN KEY (location) REFERENCES EnvTable(countryCode),
     FOREIGN KEY (skuID) REFERENCES Item(sku_id)
 ) ENGINE=InnoDB;
 
 -- Now the Process table (note backticks because "Process" is a MySQL keyword)
 CREATE TABLE IF NOT EXISTS Processes (
-    process_id INT AUTO_INCREMENT PRIMARY KEY,
+    process_id INT PRIMARY KEY,
     PlantID INT,
     processName VARCHAR(100) NOT NULL,
     employeeCount INT,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Processes (
 
 -- Create ItemProcess (many-to-many between Item and Process)
 CREATE TABLE IF NOT EXISTS ItemProcess (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
+    ID INT PRIMARY KEY,
     itemID INT,
     processID INT,
     FOREIGN KEY (itemID) REFERENCES Item(sku_id),
