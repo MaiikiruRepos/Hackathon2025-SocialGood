@@ -9,7 +9,11 @@ const DropzoneUpload = () => {
   const onDrop = useCallback(async (acceptedFiles) => {
     const zipFile = acceptedFiles[0];
     const formData = new FormData();
-    formData.append('zip', zipFile);
+
+    if (!zipFile) return;
+
+    formData.append('file', zipFile);
+    formData.append('googleID', '000001');
 
     console.log("hello");
     console.log([...formData]);
