@@ -9,7 +9,7 @@ import {
 import axios from 'axios';
 
 // Setup default baseURL (ensure trailing slash)
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'https://gamer.naliwajka.com';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const SkuTable = ({ googleID }) => {
