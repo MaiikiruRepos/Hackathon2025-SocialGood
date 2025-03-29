@@ -103,3 +103,7 @@ You may access the OpenAPI documentation/test interface by going to: <br>
 ## Frontend Instructions
 `cd frontend/hack-2025 && npm run dev`
 
+## Documentation:
+### ER Diagram:
+![alt text](Documentation/ERDiagram.png)
+
