@@ -38,10 +38,22 @@ PRIORITY_ORDER = [
 ]
 
 THEME_BASE_TIMES = {
-    "pcb": datetime(2023, 1, 1, 0, 0),
-    "trucking": datetime(2023, 2, 1, 0, 0),
+    "ai": datetime(2023, 1, 1, 0, 0),
+    "lego": datetime(2023, 2, 1, 0, 0),
     "insurance": datetime(2023, 3, 1, 0, 0)
 }
+# Country energy multipliers (plants in some countries use more/less)
+COUNTRY_ENERGY_MODIFIERS = {
+    "US": 1.00,
+    "CA": 0.95,
+    "CN": 1.10,
+    "IN": 1.15,
+    "GB": 0.90
+}
+
+# Minimum decay factor after N sets (don’t reduce energy too much)
+MIN_DECAY = 0.75
+DECAY_PER_SET = 0.05
 
 # Example: generating x “bulk users” and adding them to the newly created DB
 def insert_bulk_users(engine, user_count=5):
@@ -81,7 +93,9 @@ def insert_bulk_users(engine, user_count=5):
 # 2) DB loading function (creates DB, loads CSV, inserts bulk data, etc.)
 # ------------------------------------------------------------------
 
-def upload_theme_folder_to_db(folder_path, google_id, timeinstance, theme, timestamp, include_bulk=False, bulk_user_count=5):
+def upload_theme_folder_to_db(folder_path, google_id, timeinstance, theme, timestamp,
+                              include_bulk=False, bulk_user_count=5,
+                              folder_name=None, set_index=1):
     """
     Creates a new DB for the (theme + timestamp), loads environment data,
     loads CSVs in priority order, optionally inserts bulk user data,
@@ -211,7 +225,9 @@ def run_pipeline(include_bulk=False, bulk_user_count=5):
             theme=theme,
             timestamp=timestamp,
             include_bulk=include_bulk,
-            bulk_user_count=bulk_user_count
+            bulk_user_count=bulk_user_count,
+            folder_name=folder,  # <-- add this
+            set_index=index  # <-- add this
         )
 
     print("Generating score charts for all databases...")

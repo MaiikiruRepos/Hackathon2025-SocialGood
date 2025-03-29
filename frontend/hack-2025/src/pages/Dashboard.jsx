@@ -57,23 +57,26 @@ const Dashboard = () => {
     <div>
       <Navbar />
 
-      {/* Input for GoogleID */}
-      <div className="bg-white p-4">
-        <div className="flex justify-end space-x-2">
-          <input
-            type="text"
-            placeholder="Enter GoogleID"
-            value={googleID}
-            onChange={handleGoogleIDChange}
-            className="p-2 border rounded"
-          />
+        {/* GoogleID Dropdown */}
+        <div className="bg-white p-4">
+          <div className="flex justify-end space-x-2">
+            <select
+              value={googleID}
+              onChange={handleGoogleIDChange}
+              className="p-2 border rounded"
+            >
+              <option value="000001">000001</option>
+              <option value="ai_user">AI Company</option>
+              <option value="lego_user">Lego</option>
+              <option value="insurance_user">Insurance Company</option>
+            </select>
+          </div>
         </div>
-      </div>
 
       <HeroDash googleID={googleID} />
 
       <div className='bg-white min-h-screen'>
-        <SkuTable rawData={updatedData} />
+        <SkuTable googleID={googleID} />
       </div>
     </div>
   );
