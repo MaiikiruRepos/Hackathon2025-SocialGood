@@ -5,11 +5,11 @@ import forest from '/src/assets/forest.jpg'; // use your actual image path
 
 const Hero = () => {
   const [text, setText] = useState('');
-  const sayings = ["Save the planet.", "Go green, live clean.", "Be the change.", "Sustainability first."];
+  const sayings = ["Save the planet", "Go green, live clean", "Be the change", "Sustainability first"];
   const [index, setIndex] = useState(0);
   const typingSpeed = 100; // Speed of typing (ms per character)
   const erasingSpeed = 70; // Speed of erasing (ms per character)
-  const pauseBetweenText = 1000; // Pause between each text before erasing
+  const pauseBetweenText = 2000; // Pause between each text before erasing
 
   useEffect(() => {
     let typingTimeout;
@@ -77,17 +77,14 @@ const Hero = () => {
     >
       <div className="w-full bg-black/60 px-4 py-24">
         <div className="max-w-[1240px] mx-auto text-center text-white px-8">
-          <p className="text-[#A0FEC0] font-bold text-2xl">Get reports</p>
+          {/* <p className="text-[#A0FEC0] font-bold text-2xl">Get Reports</p> */}
           <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-4">
-            Make earth better
+            Saving Earth, One Step at a Time
           </h1>
-          <p className="md:text-2xl text-xl font-medium text-gray-200">
-            some good stuff
-          </p>
 
           {/* Typing effect with a fixed or min-height container to prevent jumping */}
           <p
-            className="md:text-xl text-lg font-light text-gray-300 mt-4"
+            className="md:text-3xl text-lg font-light text-gray-300 mt-4"
             style={{ minHeight: "30px", overflow: "hidden" }} // Ensure the container doesn't shrink or jump
           >
             {text}
