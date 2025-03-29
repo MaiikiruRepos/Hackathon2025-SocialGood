@@ -176,3 +176,5 @@ cython_debug/
 /bom_converter/input/
 bom_converter/output/
 .env
+/backend/demo/bulkdata/all_themes_output/*
+/backend/demo/charts_output/*
