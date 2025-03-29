@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS EnvTable (
 -- Create Item next
 CREATE TABLE IF NOT EXISTS Item (
     sku_id INT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    sku_name VARCHAR(100) NOT NULL,
     subSKUID INT,
     processID INT
 ) ENGINE=InnoDB;
@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS Processes (
     employeeCount INT,
     electricCount DECIMAL(10,2),
     GasCount DECIMAL(10,2),
+    DieselCount DECIMAL(10,2),
     FOREIGN KEY (PlantID) REFERENCES Plant(plant_id)
 ) ENGINE=InnoDB;
 
