@@ -72,10 +72,10 @@ const Hero = () => {
 
   return (
     <div
-      className="w-full bg-cover bg-center bg-no-repeat"
+      className="w-full h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${forest})` }}
     >
-      <div className="w-full bg-black/60 px-4 py-24">
+      <div className="w-full bg-black/60 h-screen flex justify-center items-center px-4">
         <div className="max-w-[1240px] mx-auto text-center text-white px-8">
           {/* <p className="text-[#A0FEC0] font-bold text-2xl">Get Reports</p> */}
           <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-4">
@@ -103,7 +103,7 @@ const Hero = () => {
             </Link>
           </div>
 
-          <p className="text-gray-300 mt-10">Scroll for more information</p>
+          <p className="text-gray-300 mt-10 ">Scroll for more information</p>
           <div className="mt-4 flex justify-center">
             <FiChevronDown className="text-3xl text-white animate-bounce" />
           </div>
