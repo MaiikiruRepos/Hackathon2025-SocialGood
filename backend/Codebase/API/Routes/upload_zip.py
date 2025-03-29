@@ -2,6 +2,7 @@ from fastapi import APIRouter, UploadFile, File, Form
 import tempfile, os, zipfile
 import pandas as pd
 
+from ..Tools.Results.compute_results import compute_results
 from ..Tools.verify_csv_matches_table_schema import verify_csv_matches_table_schema
 from ..config import get_engine
 from ..Tools.create_database import create_database
@@ -69,6 +70,7 @@ async def upload_zip(
             except Exception as e:
                 return {"error": f"{entry}: {str(e)}"}
 
+        compute_results(engine)
     return {
         "message": "All CSVs imported successfully, EnvTable loaded.",
         "timeinstance": timeinstance,
