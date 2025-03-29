@@ -98,7 +98,7 @@ Once you are sure you have all the dependencies, run the following:
 `$ fastapi dev backend/Codebase/API/main.py`
 
 You may access the OpenAPI documentation/test interface by going to: <br>
-[http://localhost:8000](http://localhost:8000)
+[http://localhost:8000/docs](http://localhost:8000/docs)
 
 ## Frontend Instructions
 `cd frontend/hack-2025 && npm run dev`
