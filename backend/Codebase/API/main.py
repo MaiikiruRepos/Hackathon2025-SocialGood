@@ -6,8 +6,6 @@ from .Routes import (get_history_graph, upload_zip, get_ratings,
                      drop_user_databases_api, print_db_contents_api,
                      test_api)
 
-from .Tools.compute_results import compute_scores
-
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -37,5 +35,3 @@ app.include_router(drop_user_databases_api.router)
 app.include_router(print_db_contents_api.router)
 
 app.include_router(test_api.router)
-
-# compute_scores("001-2025-03-28_21:03")
