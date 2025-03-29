@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronDown } from 'react-icons/fi';
-import forest from '/src/assets/forest.jpg'; // use your actual image path
+import forest from '/src/assets/forest.webp'; // use your actual image path
 
 const Hero = () => {
   const [text, setText] = useState('');

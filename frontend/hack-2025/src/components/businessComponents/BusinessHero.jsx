@@ -1,5 +1,5 @@
 import React from 'react';
-import business from '/src/assets/business.jpg';
+import business from '/src/assets/business.webp';
 import DropzoneUpload from './DropzoneUpload';
 
 const BusinessHero = () => {
