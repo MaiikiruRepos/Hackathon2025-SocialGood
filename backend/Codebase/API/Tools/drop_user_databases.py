@@ -2,9 +2,10 @@
 
 import re
 from sqlalchemy import text
-from ..config import get_engine
+from backend.Codebase.API.config import get_engine
 
-db_pattern = re.compile(r'^\d+-\d{4}-\d{2}-\d{2}_\d{2}:\d{2}$')
+# Match anything like <anything>-YYYY-MM-DD_HH-MM
+db_pattern = re.compile(r'^.+-\d{4}-\d{2}-\d{2}_\d{2}-\d{2}$')
 
 def drop_user_databases():
     engine = get_engine("mysql")
@@ -16,8 +17,12 @@ def drop_user_databases():
 
         for db_name in all_dbs:
             if db_pattern.match(db_name):
-                print(f"Dropping database: {db_name}")
+                print(f"🗑 Dropping database: {db_name}")
                 conn.execute(text(f"DROP DATABASE `{db_name}`"))
                 dropped.append(db_name)
 
+    print(f"[✓] Dropped {len(dropped)} user databases.")
     return dropped
+
+if __name__ == "__main__":
+    drop_user_databases()

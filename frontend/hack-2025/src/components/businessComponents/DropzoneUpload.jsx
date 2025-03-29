@@ -10,6 +10,8 @@ const DropzoneUpload = () => {
     const zipFile = acceptedFiles[0];
     const formData = new FormData();
 
+    if (!zipFile) return;
+
     formData.append('file', zipFile);
     formData.append('googleID', '000001');
 
