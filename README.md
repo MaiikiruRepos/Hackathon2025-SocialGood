@@ -105,5 +105,5 @@ You may access the OpenAPI documentation/test interface by going to: <br>
 
 ## Documentation:
 ### ER Diagram:
-![ER Diagram](/Documentation/ERDiagram.png)
+![ER Diagram](Documentation/ERDiagram.png)
 
