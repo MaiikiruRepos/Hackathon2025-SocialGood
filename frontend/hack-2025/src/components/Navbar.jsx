@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
         {/* Make "Ecopulse." clickable and route to home page */}
         <Link to="/" className='w-full text-3xl font-bold text-[#00A86B]'>
-          Ecopulse.
+          Ecopulse
         </Link>
 
         <ul className='hidden md:flex'>
