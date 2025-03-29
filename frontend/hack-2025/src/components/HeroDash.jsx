@@ -56,7 +56,7 @@ const HeroDash = ({ name = 'User', googleID = '1' }) => {
 
     const fetchHistoryData = async () => {
       try {
-        const historyRes = await fetch('http://localhost:8000/get_history_graph/', {
+        const historyRes = await fetch('https://gamer.naliwajka.com/get_history_graph/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
