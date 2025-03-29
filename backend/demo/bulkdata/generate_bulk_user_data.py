@@ -56,7 +56,7 @@ def get_weighted_country_pool():
 
 
 
-THEMES = ["pcb", "trucking", "insurance"]
+THEMES = ["ai", "lego", "insurance"]
 
 def generate_user_ids(prefix: str, count: int):
     return [f"{prefix}_user_{i:03d}" for i in range(1, count + 1)]
