@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='sticky top-0 z-50 shadow-sm bg-black'>
+    <div className='sticky top-0 z-50 shadow-sm bg-[#1A1A1A]'>
     <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
       <h1 className='w-full text-3xl font-bold text-[#00A86B]'>Ecopulse.</h1>
       <ul className='hidden md:flex'>
