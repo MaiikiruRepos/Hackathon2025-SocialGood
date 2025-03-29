@@ -17,11 +17,11 @@
   "plants": [
     {
       "location": "USA",
-      "plantnum": 1
+      "plant_id": 1
     },
     {
       "location": "Mexico",
-      "plantnum": 2
+      "plant_id": 2
     }
   ]
 }

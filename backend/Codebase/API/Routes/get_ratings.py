@@ -7,10 +7,10 @@ router = APIRouter()
 
 @router.post("/get_ratings/")
 def get_ratings(input_data: SingleInput):
-    google_id = str(input_data.googleID)
-    time_instance = input_data.timeInstance
-    db_name = f"{google_id}-{time_instance}"
-    result = {}
+    google_id: str = str(input_data.googleID)
+    time_instance: str = input_data.timeInstance
+    db_name: str = f"{google_id}-{time_instance}"
+    result:dict = {}
 
     try:
         with get_engine(db_name).connect() as conn:

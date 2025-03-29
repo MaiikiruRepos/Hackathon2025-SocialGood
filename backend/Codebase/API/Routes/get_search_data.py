@@ -7,15 +7,15 @@ router = APIRouter()
 
 @router.post("/search_data/")
 def search_data(input_data: SearchInput):
-    google_id = str(input_data.googleID)
-    time_instance = input_data.timeInstance
-    search_term = input_data.searchBarData.lower()
-    plant_filter = input_data.plantFilter
+    google_id: str = str(input_data.googleID)
+    time_instance: str = input_data.timeInstance
+    search_term: str = input_data.searchBarData.lower()
+    plant_filter: list[int] = input_data.plantFilter
     start = input_data.returnStartNum
     end = input_data.returnEndNum
     db_name = f"{google_id}-{time_instance}"
 
-    result = {"plant": {}}
+    result:dict  = {"plant": {}}
 
     try:
         with get_engine(db_name).connect() as conn:
