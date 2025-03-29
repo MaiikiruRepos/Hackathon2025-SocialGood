@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   flexRender,
   getFilteredRowModel,
+  getPaginationRowModel,
 } from '@tanstack/react-table';
 
 const SkuTable = ({ rawData }) => {
@@ -32,42 +33,27 @@ const SkuTable = ({ rawData }) => {
 
   const columns = useMemo(
     () => [
-      { header: 'Plant ID', 
-        accessorKey: 'plantId', 
-        meta: {filterVariant : "text"},
-    },
-      { header: 'SKU ID', 
-        accessorKey: 'skuId',
-        meta: {filterVariant : "text"},
-    },
-      { header: 'Description', 
-        accessorKey: 'description',
-        meta: {filterVariant : "text"},
-    },
-      { header: 'Carbon (LB)', 
-        accessorKey: 'carbon',
-        meta: {filterVariant : "range"},
-    },
-      { header: 'Water (Gal)', 
-        accessorKey: 'water',
-        meta: {filterVariant : "range"},
-    },
+      { header: 'Plant ID', accessorKey: 'plantId', meta: { filterVariant: "text" } },
+      { header: 'SKU ID', accessorKey: 'skuId', meta: { filterVariant: "text" } },
+      { header: 'Description', accessorKey: 'description', meta: { filterVariant: "text" } },
+      { header: 'Carbon (LB)', accessorKey: 'carbon', meta: { filterVariant: "range" } },
+      { header: 'Water (Gal)', accessorKey: 'water', meta: { filterVariant: "range" } },
     ],
     []
   );
 
   const [columnFilters, setColumnFilters] = useState([]);
 
-
   const table = useReactTable({
     data,
     columns,
     state: {
-        columnFilters,
+      columnFilters,
     },
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(), // Added pagination support
   });
 
   return (
@@ -86,9 +72,9 @@ const SkuTable = ({ rawData }) => {
                   >
                     {flexRender(header.column.columnDef.header, header.getContext())}
                     {header.column.getCanFilter() ? (
-                        <div className="mt-1">
-                            <Filter column={header.column} />
-                        </div>
+                      <div className="mt-1">
+                        <Filter column={header.column} />
+                      </div>
                     ) : null}
                   </th>
                 ))}
@@ -118,40 +104,38 @@ const SkuTable = ({ rawData }) => {
 
 export default SkuTable;
 
-
 function Filter({ column }) {
-    const columnFilterValue = column.getFilterValue();
-    const { filterVariant } = column.columnDef.meta ?? {};
-  
-    return filterVariant === 'range' ? (
-      <div className="flex space-x-1">
-        <input
-          type="number"
-          value={columnFilterValue?.[0] ?? ''}
-          onChange={(e) =>
-            column.setFilterValue((old = []) => [e.target.value, old?.[1]])
-          }
-          placeholder="Min"
-          className="w-20 p-1 border rounded"
-        />
-        <input
-          type="number"
-          value={columnFilterValue?.[1] ?? ''}
-          onChange={(e) =>
-            column.setFilterValue((old = []) => [old?.[0], e.target.value])
-          }
-          placeholder="Max"
-          className="w-20 p-1 border rounded"
-        />
-      </div>
-    ) : (
-      <input
-        type="text"
-        value={columnFilterValue ?? ''}
-        onChange={(e) => column.setFilterValue(e.target.value)}
-        placeholder="Search..."
-        className="w-36 p-1 border rounded"
-      />
-    );
-  }
+  const columnFilterValue = column.getFilterValue();
+  const { filterVariant } = column.columnDef.meta ?? {};
 
+  return filterVariant === 'range' ? (
+    <div className="flex space-x-1">
+      <input
+        type="number"
+        value={columnFilterValue?.[0] ?? ''}
+        onChange={(e) =>
+          column.setFilterValue((old = []) => [e.target.value, old?.[1]])
+        }
+        placeholder="Min"
+        className="w-20 p-1 border rounded"
+      />
+      <input
+        type="number"
+        value={columnFilterValue?.[1] ?? ''}
+        onChange={(e) =>
+          column.setFilterValue((old = []) => [old?.[0], e.target.value])
+        }
+        placeholder="Max"
+        className="w-20 p-1 border rounded"
+      />
+    </div>
+  ) : (
+    <input
+      type="text"
+      value={columnFilterValue ?? ''}
+      onChange={(e) => column.setFilterValue(e.target.value)}
+      placeholder="Search..."
+      className="w-36 p-1 border rounded"
+    />
+  );
+}

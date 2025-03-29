@@ -4,6 +4,9 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import pandas as pd
 
+# We need this for the quick "SELECT COUNT(*)" queries
+from sqlalchemy import text
+
 from backend.Codebase.API.Tools.Results.compute_results import compute_results
 from backend.Codebase.API.Tools.create_database import create_database
 from backend.Codebase.API.Tools.drop_user_databases import drop_user_databases
@@ -36,16 +39,35 @@ THEME_BASE_TIMES = {
 }
 NUM_SETS = 4
 
+
 def upload_theme_folder_to_db(folder_path, db_label, google_id, timeinstance, theme, timestamp):
+    """Create a new DB, load CSVs in priority order, verify each table is created,
+    and finally compute results for that DB."""
     db_name = f"{google_id}-{timeinstance}"
     print(f"[DB] Creating: {db_name}")
 
+    # Create the database
     create_database(google_id, timeinstance=timeinstance)
+
+    # Get an engine for the newly created database
     engine = get_engine(db_name)
 
+    # ----------------------------------------------------------------------------
+    # ADDED CHECK: Confirm the DB connection is valid
+    # ----------------------------------------------------------------------------
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        print(f"[DB CHECK] Successfully connected to {engine.url}\n")
+    except Exception as e:
+        print(f"[DB ERROR] Could not connect to {db_name}: {e}")
+        return
+
+    # Load environmental data
     print(f"[ENV] Loading EnvTable for {db_name}...")
     load_environmental_data(db_name)
 
+    # Import CSVs in the correct order
     print(f"[CSV] Importing from {folder_path}")
     files = sorted(
         [f for f in os.listdir(folder_path) if f.endswith(".csv")],
@@ -56,16 +78,35 @@ def upload_theme_folder_to_db(folder_path, db_label, google_id, timeinstance, th
         table = file.replace(".csv", "")
         path = os.path.join(folder_path, file)
         try:
+            # Read CSV
             df = pd.read_csv(path)
+
+            # Validate columns match DB schema (existing table) if needed
             verify_csv_matches_table_schema(engine, table, df)
+
+            # Load data into the table (append if_exists)
             df.to_sql(table, engine, if_exists="append", index=False)
             print(f"Loaded {file} into {table}")
+
+            # ----------------------------------------------------------------------------
+            # ADDED CHECK: Verify the table now exists and has rows
+            # ----------------------------------------------------------------------------
+            with engine.connect() as conn:
+                row_count = conn.execute(text(f"SELECT COUNT(*) FROM {table}")).scalar()
+                print(f"[DB CHECK] Table '{table}' now has {row_count} rows.\n")
+
         except Exception as e:
-            print(f"ERROR loading {file}: {e}")
+            print(f"ERROR loading {file} into table '{table}': {e}")
 
     print("[✓] Computing results...")
-    compute_results(engine, theme=theme, timeinstance=timestamp)
+    try:
+        compute_results(engine, theme=theme, timeinstance=timestamp)
+        print("[✓] compute_results() completed.")
+    except Exception as e:
+        print(f"[ERROR] compute_results failed: {e}")
+
     print(f"[DONE] {db_name} loaded successfully.\n")
+
 
 def run_pipeline(include_bulk=False, bulk_user_count=30):
     print("Purging all user databases...")
