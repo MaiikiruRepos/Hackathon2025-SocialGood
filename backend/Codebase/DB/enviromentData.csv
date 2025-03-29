@@ -1,0 +1,250 @@
+﻿countryCode,countryName,continent,gasCarbonLbPerGal,gasWaterGalPerGal,dieselCarbonLbPerGal,dieselWaterLbPerGal,elecCarbonLbPerKwh,elecWaterGalPerKwh,employeeCarbonLbPer,employeeWaterGalPer
+AD,Andorra,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+AE,United Arab Emirates,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+AF,Afghanistan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+AG,Antigua and Barbuda,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+AI,Anguilla,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+AL,Albania,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+AM,Armenia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+AO,Angola,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+AQ,Antarctica,Antarctica,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+AR,Argentina,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+AS,American Samoa,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+AT,Austria,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+AU,Australia,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+AW,Aruba,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+AX,Ã…land Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+AZ,Azerbaijan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+BA,Bosnia and Herzegovina,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+BB,Barbados,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+BD,Bangladesh,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+BE,Belgium,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+BF,Burkina Faso,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+BG,Bulgaria,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+BH,Bahrain,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+BI,Burundi,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+BJ,Benin,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+BL,Saint BarthÃ©lemy,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+BM,Bermuda,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+BN,Brunei Darussalam,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+BO,Bolivia (Plurinational State of),South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+BQ,Bonaire Sint Eustatius and Saba,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+BR,Brazil,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+BS,Bahamas,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+BT,Bhutan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+BV,Bouvet Island,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+BW,Botswana,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+BY,Belarus,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+BZ,Belize,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+CA,Canada,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+CC,Cocos (Keeling) Islands,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+CD,Congo (Democratic Republic of the),Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+CF,Central African Republic,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+CG,Congo,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+CH,Switzerland,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+CI,CÃ´te d'Ivoire,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+CK,Cook Islands,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+CL,Chile,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+CM,Cameroon,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+CN,China,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+CO,Colombia,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+CR,Costa Rica,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+CU,Cuba,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+CV,Cabo Verde,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+CW,CuraÃ§ao,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+CX,Christmas Island,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+CY,Cyprus,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+CZ,Czechia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+DE,Germany,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+DJ,Djibouti,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+DK,Denmark,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+DM,Dominica,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+DO,Dominican Republic,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+DZ,Algeria,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+EC,Ecuador,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+EE,Estonia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+EG,Egypt,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+EH,Western Sahara,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+ER,Eritrea,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+ES,Spain,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+ET,Ethiopia,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+FI,Finland,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+FJ,Fiji,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+FK,Falkland Islands (Malvinas),South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+FM,Micronesia (Federated States of),Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+FO,Faroe Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+FR,France,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+GA,Gabon,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+GB,United Kingdom of Great Britain and Northern Ireland,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+GD,Grenada,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+GE,Georgia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+GF,French Guiana,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GG,Guernsey,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GH,Ghana,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+GI,Gibraltar,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GL,Greenland,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GM,Gambia,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+GN,Guinea,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+GP,Guadeloupe,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GQ,Equatorial Guinea,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+GR,Greece,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+GS,South Georgia and the South Sandwich Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GT,Guatemala,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+GU,Guam,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+GW,Guinea-Bissau,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+GY,Guyana,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+HK,Hong Kong,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+HM,Heard Island and McDonald Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+HN,Honduras,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+HR,Croatia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+HT,Haiti,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+HU,Hungary,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+ID,Indonesia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+IE,Ireland,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+IL,Israel,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+IM,Isle of Man,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+IN,India,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+IO,British Indian Ocean Territory,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+IQ,Iraq,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+IR,Iran (Islamic Republic of),Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+IS,Iceland,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+IT,Italy,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+JE,Jersey,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+JM,Jamaica,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+JO,Jordan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+JP,Japan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+KE,Kenya,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+KG,Kyrgyzstan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+KH,Cambodia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+KI,Kiribati,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+KM,Comoros,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+KN,Saint Kitts and Nevis,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+KP,Korea (Democratic People's Republic of),Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+KR,Korea (Republic of),Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+KW,Kuwait,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+KY,Cayman Islands,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+KZ,Kazakhstan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+LA,Lao People's Democratic Republic,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+LB,Lebanon,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+LC,Saint Lucia,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+LI,Liechtenstein,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+LK,Sri Lanka,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+LR,Liberia,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+LS,Lesotho,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+LT,Lithuania,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+LU,Luxembourg,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+LV,Latvia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+LY,Libya,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MA,Morocco,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MC,Monaco,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+MD,Moldova (Republic of),Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+ME,Montenegro,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+MF,Saint Martin (French part),Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+MG,Madagascar,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MH,Marshall Islands,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+MK,Republic of North Macedonia,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+ML,Mali,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MM,Myanmar,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+MN,Mongolia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+MO,Macao,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+MP,Northern Mariana Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+MQ,Martinique,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+MR,Mauritania,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MS,Montserrat,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+MT,Malta,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+MU,Mauritius,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MV,Maldives,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+MW,Malawi,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+MX,Mexico,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+MY,Malaysia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+MZ,Mozambique,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+NA,Namibia,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+NC,New Caledonia,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+NE,Niger,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+NF,Norfolk Island,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+NG,Nigeria,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+NI,Nicaragua,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+NL,Netherlands,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+NO,Norway,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+NP,Nepal,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+NR,Nauru,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+NU,Niue,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+NZ,New Zealand,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+OM,Oman,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+PA,Panama,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+PE,Peru,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+PF,French Polynesia,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+PG,Papua New Guinea,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+PH,Philippines,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+PK,Pakistan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+PL,Poland,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+PM,Saint Pierre and Miquelon,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+PN,Pitcairn,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+PR,Puerto Rico,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+PS,Palestine (State of),Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+PT,Portugal,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+PW,Palau,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+PY,Paraguay,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+QA,Qatar,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+RE,RÃ©union,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+RO,Romania,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+RS,Serbia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+RU,Russian Federation,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+RW,Rwanda,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SA,Saudi Arabia,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+SB,Solomon Islands,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+SC,Seychelles,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SD,Sudan,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SE,Sweden,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+SG,Singapore,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+SH,Saint Helena  Ascension and Tristan da Cunha,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+SI,Slovenia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+SJ,Svalbard and Jan Mayen,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+SK,Slovakia,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+SL,Sierra Leone,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SM,San Marino,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+SN,Senegal,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SO,Somalia,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SR,Suriname,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+SS,South Sudan,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+ST,Sao Tome and Principe,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+SV,El Salvador,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+SX,Sint Maarten (Dutch part),Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+SY,Syrian Arab Republic,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+SZ,Eswatini,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+TC,Turks and Caicos Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+TD,Chad,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+TF,French Southern Territories,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+TG,Togo,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+TH,Thailand,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+TJ,Tajikistan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+TK,Tokelau,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+TL,Timor-Leste,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+TM,Turkmenistan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+TN,Tunisia,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+TO,Tonga,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+TR,Turkey,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+TT,Trinidad and Tobago,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+TV,Tuvalu,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+TW,Taiwan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+TZ,Tanzania (United Republic of),Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+UA,Ukraine,Europe,19.5991,2.5,22.398966,2,0.7,0.2,6.8,55
+UG,Uganda,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+UM,United States Minor Outlying Islands,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+US,United States of America,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+UY,Uruguay,South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+UZ,Uzbekistan,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+VA,Holy See,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+VC,Saint Vincent and the Grenadines,North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+VE,Venezuela (Bolivarian Republic of),South America,19.5991,2.7,22.398966,2.3,0.5,0.15,5.8,50
+VG,Virgin Islands (British),North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+VI,Virgin Islands (U.S.),North America,19.5991,3,22.398966,2.5,0.9920802,0.3,8.2,80
+VN,Viet Nam,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+VU,Vanuatu,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+WF,Wallis and Futuna,Unknown,19.5991,3,22.398966,2.5,0.9920802,0.25,5.511557,50
+WS,Samoa,Oceania,19.5991,2.8,22.398966,2.3,1.1,0.2,7.5,65
+YE,Yemen,Asia,19.5991,3.5,22.4,3,1.4,0.3,6.2,45
+YT,Mayotte,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+ZA,South Africa,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+ZM,Zambia,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35
+ZW,Zimbabwe,Africa,19.6,2.5,22.4,2,1.1,0.2,5.5,35

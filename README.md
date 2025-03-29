@@ -31,3 +31,37 @@ SQL_SCHEMA_FILE=schema.sql
 
 
 (venv) root@Hackathon:~/Hackathon2025-SocialGood/backend/Codebase/API# PYTHONPATH=. fastapi dev main.py
+
+
+
+
+----
+docker notes
+
+docker compose up
+
+
+
+docker compose up -d
+(runs in background)
+
+
+docker container list
+(lists docker instances, pay attenton to name)
+
+docker container inspect replaceWITHNAME
+(get IPaddress from here)
+
+
+
+
+
+
+(to remove)
+docker compose down
+
+docker volume list
+(get the name)
+
+
+docker volume remove replaceWITHNAME

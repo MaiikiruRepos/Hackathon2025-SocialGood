@@ -1,14 +1,16 @@
 -- Create EnvTable first because others depend on it
 CREATE TABLE IF NOT EXISTS EnvTable (
-    Location VARCHAR(100) PRIMARY KEY,
+    countryCode VARCHAR(10) PRIMARY KEY,
+    countryName VARCHAR(100),
+    continent VARCHAR(50),
     gasCarbonLbPerGal DECIMAL(10,4),
     gasWaterGalPerGal DECIMAL(10,4),
-    elecCarbonLbPerKwh DECIMAL(10,4),
-    elecWaterLbPerKwh DECIMAL(10,4),
-    employeeCarbonLbPer DECIMAL(10,4),
-    employeeWaterGalPer DECIMAL(10,4),
     dieselCarbonLbPerGal DECIMAL(10,4),
-    dieselWaterLbPerGal DECIMAL(10,4)
+    dieselWaterLbPerGal DECIMAL(10,4),
+    elecCarbonLbPerKwh DECIMAL(10,4),
+    elecWaterGalPerKwh DECIMAL(10,4),
+    employeeCarbonLbPer DECIMAL(10,4),
+    employeeWaterGalPer DECIMAL(10,4)
 ) ENGINE=InnoDB;
 
 -- Create Item next
