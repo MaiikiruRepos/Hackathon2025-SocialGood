@@ -11,7 +11,8 @@ from backend.Codebase.API.Tools.load_enviromental_data import load_environmental
 from backend.Codebase.API.Tools.verify_csv_matches_table_schema import verify_csv_matches_table_schema
 from backend.Codebase.API.config import get_engine
 from backend.demo.bulkdata.generate_all_themes import run_all_themes
-
+from backend.demo.bulkdata.generate_bulk_user_data import run_bulk_user_generation
+from backend.demo.heatmap.generate_world_heatmap import generate_world_heatmaps_for_year
 from backend.demo.visualize.generate_score_charts import main as generate_charts_main
 
 # Constants
@@ -66,12 +67,16 @@ def upload_theme_folder_to_db(folder_path, db_label, google_id, timeinstance, th
     compute_results(engine, theme=theme, timeinstance=timestamp)
     print(f"[DONE] {db_name} loaded successfully.\n")
 
-def main():
+def run_pipeline(include_bulk=False, bulk_user_count=30):
     print("Purging all user databases...")
     drop_user_databases()
 
     print("Generating new dummy data for all themes...")
     run_all_themes(base_dir=CSV_ROOT)
+
+    if include_bulk:
+        print(f"Generating {bulk_user_count} bulk users across 3 years...")
+        run_bulk_user_generation(user_count=bulk_user_count)
 
     print("Uploading datasets to DBs...")
     for folder in os.listdir(CSV_ROOT):
@@ -107,5 +112,16 @@ def main():
     generate_charts_main()
     print("Charts generated in 'charts_output/'")
 
+    print("Generating world heatmaps for carbon and water...")
+    generate_world_heatmaps_for_year("2023")
+    generate_world_heatmaps_for_year("2024")
+
+    print("Heatmaps generated in 'charts_output/'")
+
+
 if __name__ == "__main__":
-    main()
+    # 👇 CHANGE THIS VALUE AS NEEDED
+    include_bulk = True
+    bulk_user_count = 50
+
+    run_pipeline(include_bulk=include_bulk, bulk_user_count=bulk_user_count)
