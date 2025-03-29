@@ -1,12 +1,12 @@
 from fastapi import APIRouter
 from sqlalchemy import text
 from ..config import get_engine
-from ..models import HistoryInput
+from ..models import OnlyGoogle
 
 router = APIRouter()
 
 @router.post("/get_all_timestamps/")
-def get_all_timestamps(input_data: HistoryInput) -> dict:
+def get_all_timestamps(input_data: OnlyGoogle) -> dict:
     google_id: str = str(input_data.googleID)
     result: dict = {"timestamps": []}
 
