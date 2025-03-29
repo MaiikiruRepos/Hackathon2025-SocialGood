@@ -49,7 +49,7 @@ const DropzoneUpload = () => {
       <input {...getInputProps()} className="hidden" />
       <button
         type="button"
-        className='bg-amber-950 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white hover:scale-105 transition-all duration-300 ease-in-out'
+        className='bg-[#00A86B] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-white hover:scale-105 transition-all duration-300 ease-in-out'
         onClick={open}
       >
         Upload Your BOM/File
