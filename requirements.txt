@@ -53,3 +53,5 @@ websockets==15.0.1
 faker
 pymysql
 matplotlib
+plotly
+pycountry

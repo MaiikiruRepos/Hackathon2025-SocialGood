@@ -4,9 +4,9 @@ from .Routes import (get_history_graph, upload_zip, get_ratings,
                      get_plant_list, get_plant_carbon, get_plant_water,
                      get_search_data, convert_bom, generate_config,
                      drop_user_databases_api, print_db_contents_api,
-                     test_api)
+                     test_api, get_all_timestamps)
 
-from .Tools.compute_results import compute_scores
+
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -38,4 +38,4 @@ app.include_router(print_db_contents_api.router)
 
 app.include_router(test_api.router)
 
-# compute_scores("001-2025-03-28_21:03")
+app.include_router(get_all_timestamps.router)
