@@ -17,8 +17,8 @@ const PlantPieChart = ({ title, data }) => {
   }));
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center w-[300px]">
-      <h3 className="text-black text-xl font-semibold mb-2">{title}</h3>
+    <div className="rounded-lg shadow-xl p-6 my-4 flex flex-col items-center w-[500px] hover:scale-105 duration-300">
+      <h3 className=" text-black text-2xl font-semibold mb-8">{title}</h3>
       <ResponsiveContainer width={250} height={250}>
         <PieChart>
           <Pie

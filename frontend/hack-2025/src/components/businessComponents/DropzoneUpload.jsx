@@ -1,16 +1,22 @@
 import React, { useCallback, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+const API_BASE = 'http://localhost:8000'
+
 const DropzoneUpload = () => {
   const inputRef = useRef();
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const zipFile = acceptedFiles[0];
     const formData = new FormData();
-    formData.append('file', zipFile);
+    formData.append('zip', zipFile);
+
+    console.log("hello");
+    console.log([...formData]);
+    console.log(zipFile.name, zipFile.type);
 
     try {
-      const response = await fetch('https://your.api/upload', {
+      const response = await fetch('http://localhost:8000/upload_zip/', {
         method: 'POST',
         body: formData,
       });
