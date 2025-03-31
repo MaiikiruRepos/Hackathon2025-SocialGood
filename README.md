@@ -1,4 +1,38 @@
-# 2025 Hackathon for Social Good
+# KSU: 2025 Hackathon for Social Good
+Everything was built in 40~ hours.
+
+# EcoPulse: A away for any company to get a quick pulse on their unseen carbon emissions and water usage.
+
+## Overview: 
+EcoPulse: A away for any company to get a quick pulse on their unseen carbon emissions and water usage.
+
+User flow:
+A company uploads a standard BOM containng:  
+    - Plant – Identifier for the plant location.  
+    - PlantSKUQuantity – Quantity of SKUs produced at the plant.  
+    - Process – Name of the process used.  
+    - ProcessDefinition – Description or definition of the process.  
+    - Sku – Unique identifier for the product SKU.  
+    - SkuBom – Bill of materials associated with each SKU.  
+    - SkuProcess – Process steps linked to each SKU.  
+    - Link – Relationships as defined in the latest ER diagram.  
+This information is then processed to solve for unseen carbon emissions and water usage.
+
+A large portion of this project was researching the 'unseen values'.
+
+For example, a KWH of electricity can be valued differently depending on where you are in the world.  
+This all depends on how the region you are in makes electricity: Coal? Natural Gas? Solar?
+
+Pulling from various sources such as a few IEEE articles and Government resources we can curently assign 'unseen values' for:
+ - Diesel (Gal)
+ - Electricity (KWH)
+ - Gasoline (Gal)
+
+Taking the ammout of each resource used and depending on where in the globe the source is used we then can generate statistics for the user.
+
+This information can be easily seen in the 'Dashboard' Page on the Web App.
+
+# Documentation: 
 
 ## A Quick prelude on Notation:
 I will put the shell type before the command.<br>
